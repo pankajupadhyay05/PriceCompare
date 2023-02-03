@@ -1,0 +1,41 @@
+﻿@model IEnumerable<PriceCompare.Models.Retailer>
+@Html.Telerik().StyleSheetRegistrar().DefaultGroup(group => group.Add("telerik.common.css").Add("telerik.vista.css"))
+@using Telerik.Web.Mvc.UI;
+@{
+    ViewBag.Title = "Manage Retailers";
+}
+
+<script src="@Url.Content("~/Scripts/2011.2.712/jquery-1.5.1.min.js")"></script>
+<script src="@Url.Content("~/Scripts/2011.2.712/telerik.common.min.js")"></script>
+<script src="@Url.Content("~/Scripts/2011.2.712/telerik.textbox.min.js")"></script>
+<script src="@Url.Content("~/Scripts/2011.2.712/telerik.grid.min.js")"></script>
+<script src="@Url.Content("~/Scripts/2011.2.712/telerik.grid.filtering.min.js")"></script>
+
+<div class="contentHolder">
+    <div class="adminHeading">Manage Retailers</div>
+    <div class="adminAddNew">@Html.ActionLink("Add New Item", "Create", "Retailer")</div>
+    <div class="gridListView">
+        @(Html.Telerik().Grid(Model)
+                .Name("Grid")
+                .DataKeys(keys => keys.Add(r => r.Id))
+                .Columns(columns =>
+                {
+                    columns.Bound(r => r.Id).Width(30);
+                    columns.Bound(r => r.Name).Width(150);
+                    columns.Bound(r => r.Url).Width(150);
+                    columns.Bound(r => r.Rating).Width(200);
+                    columns.Bound(r => r.Id)
+                                    .Width(50)
+                                    .Template(x => Html.ActionLink("Edit", "Edit", new { id = x.Id }))
+                                    .Title("EDIT");
+                    columns.Bound(b => b.Id)
+                                    .Width(50)
+                                    .Template(x => Html.ActionLink("Delete", "Delete", new { id = x.Id }, new { onclick = "return confirm('Are you sure you wish to delete this article?');" }))
+                                    .Title("DELETE");
+                })
+                .Pageable(paging =>paging.PageSize(15).Style(GridPagerStyles.NextPreviousAndNumeric).Position(GridPagerPosition.Bottom))
+                .Filterable()
+                .Sortable()
+        )
+    </div>
+</div>

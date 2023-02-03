@@ -1,0 +1,114 @@
+﻿@model PriceCompare.ViewModel.CatProView
+
+<div class="contentHolder">
+    @if ((string)ViewBag.ParentCategory != "Electronics" &&
+        (string)ViewBag.ParentCategory != "Computers" &&
+        (string)ViewBag.ParentCategory != "Home and Kitchen" &&
+        (string)ViewBag.ParentCategory != "Sports")
+    {  
+        <div class="breadCrumb">
+            @Html.ActionLink("Home", "Index", "Home") &nbsp;>>&nbsp; @Html.ActionLink((string)ViewBag.ParentCategory, "Section", "Store", new { id = (string)ViewBag.ParentCategory.Replace(" ", "-") }, null) &nbsp;>>&nbsp; @Model.Name
+        </div>
+    }
+    else
+    {
+        <div class="breadCrumb">
+            @Html.ActionLink("Home", "Index", "Home") &nbsp;>>&nbsp; @Html.ActionLink((string)ViewBag.ParentCategory, "Section", "Store", new { id = (string)ViewBag.ParentCategory.Replace(" ", "-") }, null) &nbsp;>>&nbsp; @Model.Name
+        </div>
+    }   
+    <div class="contentMainDiv">
+        <div class="leftDiv">
+            @{Html.RenderAction("RecentSearches", "Store");}
+            @{Html.RenderAction("RecentlyAdded", "Store");}
+            <br />
+            <div>
+                <script type="text/javascript"><!--
+                    google_ad_client = "ca-pub-9061280781853186";
+                    /* Price-tag middle-left */
+                    google_ad_slot = "7057947687";
+                    google_ad_width = 160;
+                    google_ad_height = 600;
+                    //-->
+                </script>
+                <script type="text/javascript"
+                    src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+                </script>
+            </div>
+        </div>
+        <div class="rightDiv">
+            <div class="mainCatDiv">
+                @foreach (var subCat in Model.SubCategories)
+                {
+                    <div class="catDiv">
+                        <h2>@Html.ActionLink(subCat.Name, "Catalog", "Browse", new { id = subCat.Name.Replace(" ", "-") }, null)</h2>
+                    </div>
+                }
+            </div>
+            <div class="clear"></div>
+            @if (Model.PagedProducts.Count != 0)
+            {
+                <div class="productCatHeading">
+                    <span class="sr-h-left-sprite2"><span class="foundit"></span>Found it!</span>
+                </div>
+                <div style="margin:0 0 40px 5px;font-size:14px;font-weight:bold;">Sort By Brands :: &nbsp;<span style="background:#354F59;color:#fff;border-radius:3px;padding:0 6px 1px 6px;font-weight:normal;">@ViewBag.BrandName</span> &nbsp;
+                    <a href="/Browse/Catalog/@Model.Name" style="color:#00b294;font-size:14px;margin-right:10px;text-decoration:underline;font-weight:bold;">Remove Filter</a>
+                </div>
+                <div class="productCat">   
+                @foreach (var product in Model.PagedProducts)
+                {
+                    <div class="product">
+                        <div class="sr-img-container">
+                            <a href="@Url.Action("Index", new { controller = "Product", id = product.Id, title = product.Name.Replace(" ", "-") })"><img alt="@product.Name" src="@product.Picture.PictureUrl" /></a>
+                        </div>
+                        <div class="sr-content-container">
+                            <h4>@Html.ActionLink(product.Name, "Index", new { controller = "Product", id = product.Id, title = product.Name.Replace(" ", "-") }, null)</h4>
+                            <p>
+                                @product.ShortDescription
+                            </p>
+                        </div>
+                        <div class="sr-price-area-container">
+                            <div class="price-button">
+                                <div class="sr-price">&#8360;@product.BasePrice
+                                </div>
+                                <div class="from-text">From
+                                </div>
+                                <div class="clear">
+                                </div>
+                            </div>
+                            <div class="sr-cta">
+                                @Html.ActionLink("Compare", "Index", new { controller = "Product", id = product.Id, title = product.Name.Replace(" ", "-") }, null)
+                            </div>
+                            <div class="sr-num-sellers">@product.Retailer_Product_Prices.Count()&nbsp;resellers
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                }
+                @Html.Partial("Pagination")
+            </div>
+            }
+            else
+            {
+                { Html.RenderAction("RecentlyAddedForCat", "Store", new { category = @Model.Name }); }
+            }
+            <div class="clear"></div>
+            <br /><br />
+            <div class="bottomAds">
+                <div id="bottom-rectangle">
+                    <script type="text/javascript"><!--
+                        google_ad_client = "ca-pub-9061280781853186";
+                        /* Price-tag Bottom */
+                        google_ad_slot = "1165082687";
+                        google_ad_width = 728;
+                        google_ad_height = 90;
+                        //-->
+                    </script>
+                    <script type="text/javascript"
+                        src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>

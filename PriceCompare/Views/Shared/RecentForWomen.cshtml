@@ -1,0 +1,12 @@
+﻿@model IEnumerable<PriceCompare.Models.women>
+
+@foreach (var product in Model)
+{
+    <div class="grid-item">
+		<a href="@Url.Action("product", new { controller = "wardrobe", id = product.Id, title = product.Name.Replace(", "," ").Replace(" ", "-").ToLower() })" class="grid-icon"> <img src="@product.Picture1" alt="@product.Name Price in India">
+		</a>
+		<div class="grid-text">
+			<a href="@Url.Action("product", new { controller = "wardrobe", id = product.Id, title = product.Name.Replace(", "," ").Replace(" ", "-").ToLower() })" class="grid-title">@product.Name - Buy Now</a>
+		</div>
+	</div>
+}

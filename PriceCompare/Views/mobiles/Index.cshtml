@@ -1,0 +1,159 @@
+﻿@model PriceCompare.ViewModel.CatProView
+
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script>
+    $(function () {
+        $("#slider-range").slider({
+            range: true,
+            min: 1000,
+            max: 75000,
+            step: 500,
+            values: [12000, 30000],
+            slide: function (event, ui) {
+                $('#from').val(ui.values[0]);
+                $('#to').val(ui.values[1]);
+                $("#amount").val("Rs. " + ui.values[0] + " - Rs. " + ui.values[1]);
+            }
+        });
+        $("#amount").val("Rs. " + $("#slider-range").slider("values", 0) +
+      " - Rs. " + $("#slider-range").slider("values", 1));
+    });
+</script>
+<div class="contentHolder">
+    <div class="breadCrumb">
+        @Html.ActionLink("Home", "Index", "Home") &nbsp;>>&nbsp;Mobiles Price in India
+    </div>
+    <div class="contentMainDiv">
+        <div class="leftDiv">
+            <div id="leftList">
+                <div class="leftListTitle">
+                    <h3>Price Range</h3>
+                </div>
+                <div style="padding:0px 3px 0px 3px;"><br />
+                    <p>
+                        <div id="slider-range"></div>
+                    </p>
+                    <input type="text" id="amount" name="amount" readonly style="border:0; color:#f6931f; font-weight:normal;background:none;margin:10px 0px 10px 20px;">
+                    <form style="display:inline;" action="/mobiles/price" method="get">
+                            <input type="hidden" id="from" name="from" value="12000" />
+                            <input type="hidden" id="to" name="to" value="30000" />
+                            <input type="submit" value="FILTER" style="margin-left:60px;background:#354F59;color:White;border-radius:3px;border:#354F59;cursor:pointer;" />
+                    </form><br /><br />
+                </div>
+            </div>
+            @{Html.RenderAction("RecentlyAdded", "Store");}
+            <br />
+            <div>
+                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+               <!-- Pricepan Left Side Ad -->
+               <ins class="adsbygoogle"
+                    style="display:inline-block;width:160px;height:600px"
+                    data-ad-client="ca-pub-9061280781853186"
+                    data-ad-slot="8788394715">
+               </ins>
+               <script>
+                   (adsbygoogle = window.adsbygoogle || []).push({});
+               </script>
+            </div>
+        </div>
+        <div class="rightDiv">
+            @if (Model.PagedProducts.Count != 0)
+            {
+                <div class="productCatHeading">
+                    <span class="sr-h-left-sprite2"><span class="foundit"></span>Mobiles Price List in India!</span>
+                </div>
+                
+                <div style="margin:0 0 30px 5px;font-size:0.8em;font-weight:bold;">Sort By Brands :: &nbsp;
+                    @foreach (var brand in ViewBag.Brands)
+                    {
+                        <a href="/mobiles/@brand.Name.ToLower()" style="color:#00b294;margin-right:10px;text-decoration:underline;font-weight:bold;">@brand.Name</a>
+                    }
+                </div>
+                <div class="productCat">   
+                @foreach (var product in Model.PagedProducts)
+                {
+                    <div class="product">
+                        <div class="sr-img-container">
+                            <a href="@Url.Action("Index", new { controller = "product", id = product.Id, title = product.Name.Replace(", ", " ").Replace(" ", "-").ToLower() })"><img alt="@product.Name" src="@product.Picture.PictureUrl" /></a>
+                        </div>
+                        <div class="sr-content-container">
+                            <div>@Html.ActionLink(product.Name, "Index", new { controller = "product", id = product.Id, title = product.Name.Replace(", ", " ").Replace(" ", "-").ToLower() }, null)</div>
+                            <p>
+                                @product.ShortDescription
+                            </p>
+                        </div>
+                        <div class="sr-price-area-container">
+                            <div class="price-button">
+                                @if (product.BasePrice == null)
+                                {
+                                    <div class="sr-price">Not in Stock</div>
+                                }
+                                else
+                                {
+                                    <div class="sr-price">@string.Format("{0:C0}", product.BasePrice)</div>
+                                    <div class="from-text">From
+                                    </div>
+                                }
+                                <div class="clear">
+                                </div>
+                            </div>
+                            <div class="sr-cta">
+                                @Html.ActionLink("Compare", "Index", new { controller = "product", id = product.Id, title = product.Name.Replace(", ", " ").Replace(" ", "-").ToLower() }, null)
+                            </div>
+                            <div class="sr-num-sellers">@product.Retailer_Product_Prices.Count()&nbsp;resellers
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                }
+                @Html.Partial("Pagination")
+            </div>
+            }
+            else
+            {
+                {Html.RenderAction("RecentlyAddedForCat", "Store", new { category = @Model.Name });}
+            }
+            <div class="clear"></div>
+            <br /><br />
+            <div class="disclaimer-bottom">
+                <h3 class="disclaimer-head">Notes / Disclaimer</h3>
+                <div class="disclaimer-text">
+                <ul> 
+                    <li>Prices mentioned above are the best (least) price available for each item across all stores. To get prices across all stores please select (click) a given mobile.</li> 
+                    <li>Prices may vary from store to store and from place to place based on different tax rates.</li> 
+                    <li>Prices shown above are with bill and warranty.</li> 
+                    <li>In case of any issues or discrepancy please contact us.</li> 
+                </ul>
+                </div>
+            </div>
+            <div>
+                <div style="float:left;width:350px;margin-right:10px;">
+                    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                    <!-- Pricepan Bottom Rectangle Text -->
+                    <ins class="adsbygoogle"
+                         style="display:inline-block;width:336px;height:280px"
+                         data-ad-client="ca-pub-9061280781853186"
+                         data-ad-slot="3733344316"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+                <div style="float:left;width:350px;">
+                    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                    <!-- Pricepan Bottom Rectangle Display -->
+                    <ins class="adsbygoogle"
+                         style="display:inline-block;width:336px;height:280px"
+                         data-ad-client="ca-pub-9061280781853186"
+                         data-ad-slot="6686810715"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>

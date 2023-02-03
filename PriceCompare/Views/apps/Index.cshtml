@@ -1,0 +1,87 @@
+﻿@model IEnumerable<PriceCompare.Models.Application>
+
+<div class="contentHolder">
+    <div class="breadCrumb">
+         @Html.ActionLink("Home", "Index", "Home")&nbsp;>>&nbsp;Apps
+    </div>
+    <div class="contentMainDiv">
+        <div class="leftDiv">
+            @{Html.RenderAction("RecentSearches", "Store");}
+            @{Html.RenderAction("RecentlyAdded", "Store");}
+            <br />
+            <div>
+                <script type="text/javascript"><!--
+                    google_ad_client = "ca-pub-9061280781853186";
+                    /* Price-tag middle-left */
+                    google_ad_slot = "7057947687";
+                    google_ad_width = 160;
+                    google_ad_height = 600;
+                    //-->
+                </script>
+                <script type="text/javascript"
+                    src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+                </script>
+            </div>
+        </div>
+        <div class="rightDiv">
+        <div>
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- Pricepan Homepage Bottom -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-9061280781853186"
+     data-ad-slot="4358195117"></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+        </div>
+        <div style="border-bottom:1px solid #ccc;margin-bottom:20px;margin-right:20px;">
+            <h1 style="font-size:1.2em;font-weight:bold;">Latest App Updates and launches on windows, ios and android platform</h1>
+        </div>
+            <div class="mainCatNewsDiv">
+                <div style="float:left; width:200px; margin-right:40px;"><a href="/apps/wp"><img src="../../Content/themes/base/images/wp-store.jpg" /></a></div>
+                <div style="float:left; width:200px; margin-right:40px;"><a href="/apps/ios"><img src="../../Content/themes/base/images/apple-store.png" /></a></div>
+                <div style="float:left; width:200px;"><a href="/apps/android"><img src="../../Content/themes/base/images/android-store.png" /></a></div>
+                <div class="clear"></div>
+            </div><br />
+            <div class="mainCatNewsDiv">
+               @foreach (var appStory in Model)
+               {
+                   <div class="story-pane">
+                       <div class="story-image-list">
+                           <img src="@appStory.ArticleImage" alt="@appStory.AppName" />
+                       </div>
+                       <div class="story-text"> 
+                           <div class="story-title">
+                               @Html.ActionLink(appStory.ArticleName, "article", new { controller = "apps", id = appStory.Id, title = appStory.ArticleName.Replace(", ", " ").Replace(" ", "-").ToLower() }, null)
+                           </div>
+                           <div class="story-desc">
+                               @appStory.MetaDescription.....@Html.ActionLink("Continue", "article", new { controller = "apps", id = appStory.Id, title = appStory.ArticleName.Replace(", ", " ").Replace(" ", "-").ToLower() }, null) 
+                           </div>
+                       </div>
+                       <div class="clear"></div>
+                   </div>
+               }
+            </div>
+            @Html.Partial("Pagination")
+            <div class="clear"></div>
+
+            <div class="clear"></div>
+            <br /><br />
+            <div class="bottomAds">
+                <div id="bottom-rectangle">
+                    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- Pricepan Homepage Bottom -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-9061280781853186"
+     data-ad-slot="4358195117"></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>

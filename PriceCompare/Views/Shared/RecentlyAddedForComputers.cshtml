@@ -1,0 +1,17 @@
+﻿@model IEnumerable<PriceCompare.Models.Product>
+@helper Truncate(string input, int length)
+    {
+        if (input.Length <= length)
+        {
+            @input
+        }
+        else
+        { 
+        @input.Substring(0, length)<text>...</text>
+        }
+}
+           
+@foreach (var product in Model)
+{
+    <div><a href="@Url.Action("Index", new { controller = "Product", id = product.Id, title = product.Name.Replace(", "," ").Replace(" ", "-").ToLower() })">@Truncate(product.Name, 30)</a></div><br />
+}

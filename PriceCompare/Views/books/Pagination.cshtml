@@ -1,0 +1,25 @@
+﻿<div class="pagination">
+    @if (!Model.PagedProducts.IsFirstPage)
+    {
+        <span class="page-link">
+            @Html.ActionLink("First", "genre", new { page = 1 })</span>
+    }
+    @if (Model.PagedProducts.HasPreviousPage)
+    {
+        <span class="page-link">
+            @Html.ActionLink("Prev", "genre", new { page = Model.PagedProducts.PageNumber - 1 })</span>
+    }
+    @if (Model.PagedProducts.HasNextPage)
+    {
+        <span class="page-link">
+            @Html.ActionLink("Next >", "genre", new { page = Model.PagedProducts.PageNumber + 1 })</span>
+    }
+    @if (!Model.PagedProducts.IsLastPage)
+    {
+        <span class="page-link">
+            @Html.ActionLink("Last >>", "genre", new { page = Model.PagedProducts.PageCount })</span>
+    }
+    <div class="info">
+        <i>Page @(Model.PagedProducts.PageCount < Model.PagedProducts.PageNumber ? 0 : Model.PagedProducts.PageNumber) of @Model.PagedProducts.PageCount</i>
+    </div>
+</div>

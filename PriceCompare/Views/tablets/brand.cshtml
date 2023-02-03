@@ -1,0 +1,115 @@
+﻿@model PriceCompare.ViewModel.CatProView
+
+<div class="contentHolder">
+    <div class="breadCrumb">
+        @Html.ActionLink("Home", "Index", "Home") &nbsp;>>&nbsp; @Html.ActionLink("Tablets", "Index", "tablets") &nbsp;>>&nbsp; @ViewBag.BrandName Tablets Price in India
+    </div>
+    <div class="contentMainDiv">
+        <div class="leftDiv">
+            <div>
+               <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+               <!-- Pricepan Left Side Ad -->
+               <ins class="adsbygoogle"
+                    style="display:inline-block;width:160px;height:600px"
+                    data-ad-client="ca-pub-9061280781853186"
+                    data-ad-slot="8788394715">
+               </ins>
+               <script>
+                   (adsbygoogle = window.adsbygoogle || []).push({});
+               </script>
+            </div>
+            <br />
+            @{Html.RenderAction("RecentlyAdded", "Store");}
+        </div>
+        <div class="rightDiv">
+            <div class="mainCatDiv">
+                @foreach (var subCat in Model.SubCategories)
+                {
+                    <div class="catDiv">
+                        <h2>@Html.ActionLink(subCat.Name, "Catalog", "Browse", new { id = subCat.Name.Replace(" ", "-") }, null)</h2>
+                    </div>
+                }
+            </div>
+            <div class="clear"></div>
+            @if (Model.PagedProducts.Count != 0)
+            {
+                <div class="productCatHeading">
+                    <span class="sr-h-left-sprite2"><span class="foundit"></span>@ViewBag.BrandName Tablets Price List in India!</span>
+                </div>
+                <div style="margin:0 0 40px 5px;font-size:14px;font-weight:bold;">Sort By Brands :: &nbsp;<span style="background:#354F59;color:#fff;border-radius:3px;padding:0 6px 1px 6px;font-weight:normal;">@ViewBag.BrandName</span> &nbsp;
+                    <a href="/tablets" style="color:#00b294;font-size:14px;margin-right:10px;text-decoration:underline;font-weight:bold;">Remove Filter</a>
+                </div>
+                <div class="productCat">   
+                @foreach (var product in Model.PagedProducts)
+                {
+                    <div class="product">
+                        <div class="sr-img-container">
+                            <a href="@Url.Action("Index", new { controller = "product", id = product.Id, title = product.Name.Replace(", ", " ").Replace(" ", "-").ToLower() })"><img alt="@product.Name" src="@product.Picture.PictureUrl" /></a>
+                        </div>
+                        <div class="sr-content-container">
+                            <h4>@Html.ActionLink(product.Name, "Index", new { controller = "product", id = product.Id, title = product.Name.Replace(", ", " ").Replace(" ", "-").ToLower() }, null)</h4>
+                            <p>
+                                @product.ShortDescription
+                            </p>
+                        </div>
+                        <div class="sr-price-area-container">
+                            <div class="price-button">
+                                @if (product.BasePrice == null)
+                                {
+                                    <div class="sr-price">Not in Stock</div>
+                                }
+                                else
+                                {
+                                    <div class="sr-price">@string.Format("{0:C0}", product.BasePrice)</div>
+                                    <div class="from-text">From
+                                    </div>
+                                }
+                                <div class="clear">
+                                </div>
+                            </div>
+                            <div class="sr-cta">
+                                @Html.ActionLink("Compare", "Index", new { controller = "product", id = product.Id, title = product.Name.Replace(", ", " ").Replace(" ", "-").ToLower() }, null)
+                            </div>
+                            <div class="sr-num-sellers">@product.Retailer_Product_Prices.Count()&nbsp;resellers
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                }
+                @Html.Partial("Pagination2")
+            </div>
+            }
+            else
+            {
+                { Html.RenderAction("RecentlyAddedForCat", "Store", new { category = @Model.Name }); }
+            }
+            <div class="clear"></div>
+            <br /><br />
+            <div class="disclaimer-bottom">
+                <h3 class="disclaimer-head">Notes / Disclaimer</h3>
+                <div class="disclaimer-text">
+                <ul> 
+                    <li>Prices mentioned above are the best (least) price available for each item across all stores. To get prices across all stores please select (click) a given @ViewBag.BrandName tablet.</li> 
+                    <li>Prices may vary from store to store and from place to place based on different tax rates.</li> 
+                    <li>Prices shown above are with bill and warranty.</li> 
+                    <li>In case of any issues or discrepancy please contact us.</li> 
+                </ul>
+                </div>
+            </div>
+            <div class="bottomAds">
+                <div id="bottom-rectangle">
+                     <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- Pricepan Homepage Bottom -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-9061280781853186"
+     data-ad-slot="4358195117"></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>

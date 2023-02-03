@@ -1,0 +1,16 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>@ViewBag.Count</h2>
+
+@if (ViewBag.ProductList != null)
+{
+    foreach (var product in ViewBag.ProductList)
+    {
+        <div class="ProductBox">
+            <h1>@product.title</h1>
+            <img src="@product.imageUrls" alt="" />
+        </div>
+    }
+}

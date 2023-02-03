@@ -1,0 +1,142 @@
+﻿@model PriceCompare.Models.men
+
+<link href="@Url.Content("~/Content/prettyPhoto/css/prettyPhoto.css")" rel="stylesheet" type="text/css" />
+<script src="@Url.Content("~/Scripts/jquery-1.5.1.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.prettyPhoto.js")" type="text/javascript"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("a[rel^='prettyPhoto']").prettyPhoto({
+            social_tools: false
+        });
+    });
+    $(function () {
+        $('.retailer').click(function () {
+            var url = $(this).data('url');
+            var resellerId = $(this).data('resellerid');
+            $.post(url, { retailerId: resellerId });
+        });
+    });
+</script>
+
+<div class="contentHolder">
+    <div class="breadCrumb">
+        @Html.ActionLink("Home", "Index", "Home") &nbsp;>>&nbsp;@Html.ActionLink("Wardrobe", "Index", "wardrobe")&nbsp;>>&nbsp;@Html.ActionLink("Mens", "mens", "wardrobe")&nbsp;>>&nbsp;<a href="/wardrobe/mens/@Model.Type">@ViewBag.TypeName</a>&nbsp;>>&nbsp;@Model.Name
+    </div>   
+    <div class="contentMainDiv">
+        <div class="leftDiv">
+            <div>
+               <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+               <!-- Pricepan Left Side Ad -->
+               <ins class="adsbygoogle"
+                    style="display:inline-block;width:160px;height:600px"
+                    data-ad-client="ca-pub-9061280781853186"
+                    data-ad-slot="8788394715">
+               </ins>
+               <script>
+                   (adsbygoogle = window.adsbygoogle || []).push({});
+               </script>
+            </div>
+            <br />
+            <div id="leftList">
+                <div class="leftListTitle">
+                    <h3>Mens Popular Collection</h3>
+                </div>
+                <div class="leftListItem">
+                    <ul>
+                        <li><a href="/wardrobe/mens/jeans">Jeans</a></li>
+                        <li><a href="/wardrobe/mens/formal-shirts">Formal Shirts</a></li>
+                        <li><a href="/wardrobe/mens/trousers">Trousers</a></li>
+                        <li><a href="/wardrobe/mens/polo-tshirts">Polos</a></li>
+                        <li><a href="/wardrobe/mens/blazers">Blazers</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div id="leftList">
+                <div class="leftListTitle">
+                    <h3>Womens Popular Collection</h3>
+                </div>
+                <div class="leftListItem">
+                    <ul>
+                        <li><a href="/wardrobe/womens/ethnic-dress">Ethnic Dress</a></li>
+                        <li><a href="/wardrobe/womens/kurtis">Kurtis</a></li>
+                        <li><a href="/wardrobe/womens/tops-tees">Tops</a></li>
+                        <li><a href="/wardrobe/womens/skirts">Skirts</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="rightDiv" itemscope itemtype="http://schema.org/Product">
+            <div style="width:100%;">
+                <h1 itemprop="name" style="font-size:1.2em;">@Model.Name</h1>
+                <h2>By <span itemprop="brand">@Model.ClothingBrand.Name</span></h2>
+            </div>
+            <div style="margin-top:40px;border-right:1px solid #e1e1e1;">
+                <div style="float:left;margin-right:20px;margin-left:40px;">
+                    <a rel="prettyPhoto" href="@Model.Picture1"><img itemprop="image" src="@Model.Picture1" alt="@Model.Name" style="max-height:350px;border:1px solid #e1e1e1;" /></a>
+                </div>
+                <div style="float:left;">
+                    <a rel="prettyPhoto" href="@Model.Picture2"><img src="@Model.Picture2" alt="@Model.Name" style="max-height:350px;border:1px solid #e1e1e1;"/></a>
+                </div>
+                <div class="clear"></div><br />
+                <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" style="margin-top:30px;margin-bottom:30px;">
+                    <meta itemprop="priceCurrency" content="INR" />
+                    <meta itemprop="seller" content="@Model.Retailer.Name" />
+                    <meta itemprop="url" content="@Model.Url" />
+                    <div style="float:left;">
+                        <p>Type : @ViewBag.TypeName</p><br />
+                        <p><img src="@Model.Retailer.Picture.PictureUrl" alt="@Model.Retailer.Name" /></p>
+                    </div>
+                    <div style="float:left;margin-left:120px;">
+                        <p>Inventory : @if (Model.Instock == "yes")
+                                   {
+                                       <span itemprop="availability" href="http://schema.org/InStock" style="color:#009933;font-weight:bold;">In Stock</span>
+                                   }
+                                   else
+                                   {
+                                       <span itemprop="availability" href="http://schema.org/InStock" style="color:#D20000;font-weight:bold">Out of Stock</span>
+                                   }
+                        </p>
+                        <p style="margin-top:30px;">Price: <span style="color:#D20000;font-weight:bold">INR </span><span itemprop="price" style="color:#D20000;font-weight:bold">@Model.Price</span></p>
+                    </div>
+                    <div style="float:left;margin-left:120px;padding-top:25px;">
+                        <div style="background-color:#5eb606;padding:3px 10px 3px 10px;margin-top:2px;border-radius:3px;">
+                            <a href="/refer/@Model.Retailer.Name/@Model.Id" rel="nofollow" target="_blank" style="color:#fff;" href="">Buy at Store</a>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <div class="clear"></div><br /><br />
+            <div>
+                @Html.Action("RelatedProductsForMen", "Store", new { category = @Model.Type })
+            </div>
+            <br /><br /><br />
+            <div>
+                <div style="float:left;width:350px;margin-right:10px;">
+                    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                    <!-- Pricepan Bottom Rectangle Text -->
+                    <ins class="adsbygoogle"
+                         style="display:inline-block;width:336px;height:280px"
+                         data-ad-client="ca-pub-9061280781853186"
+                         data-ad-slot="3733344316"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+                <div style="float:left;width:350px;">
+                    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                    <!-- Pricepan Bottom Rectangle Display -->
+                    <ins class="adsbygoogle"
+                         style="display:inline-block;width:336px;height:280px"
+                         data-ad-client="ca-pub-9061280781853186"
+                         data-ad-slot="6686810715"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>

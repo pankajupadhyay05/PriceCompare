@@ -1,0 +1,25 @@
+﻿<div class="pagination">
+    @if (!Model.IsFirstPage)
+    {
+        <span class="page-link">
+            @Html.ActionLink("First", "brand", new {page = 1 })</span>
+    }
+    @if (Model.HasPreviousPage)
+    {
+        <span class="page-link">
+            @Html.ActionLink("Prev", "brand", new { page = Model.PageNumber - 1 })</span>
+    }
+    @if (Model.HasNextPage)
+    {
+        <span class="page-link">
+            @Html.ActionLink("Next >", "brand", new { page = Model.PageNumber + 1 })</span>
+    }
+    @if (!Model.IsLastPage)
+    {
+        <span class="page-link">
+            @Html.ActionLink("Last >>", "brand", new { page = Model.PageCount })</span>
+    }
+    <div class="info">
+        <i>Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount</i>
+    </div>
+</div>

@@ -1,0 +1,758 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{DE07CCA6-7AD8-4732-9FE1-FC0AB72E2693}</ProjectGuid>
+    <ProjectTypeGuids>{E53F8FEA-EAE0-44A6-8774-FFD645390401};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PriceCompare</RootNamespace>
+    <AssemblyName>PriceCompare</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
+    <MvcProjectUpgradeChecked>true</MvcProjectUpgradeChecked>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <TargetFrameworkProfile />
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ExcludeApp_Data>true</ExcludeApp_Data>
+    <PublishDatabaseSettings>
+      <Objects>
+        <ObjectGroup Name="PriceCompareEntity-Deployment" Order="1">
+          <Destination Path="Data Source=rdinvent.db.10518392.hostedresource.com%3bInitial Catalog=rdinvent%3bUser ID=rdinvent%3bPassword=%27Pankaj%400588%27%3b" />
+          <Object Type="dbFullSql">
+            <PreSource Path="Data Source=.\SQLEXPRESS%3bInitial Catalog=PriceCompare%3bIntegrated Security=True" ScriptSchema="True" ScriptData="True" CopyAllFullTextCatalogs="False" />
+            <Source Path="obj\Release\AutoScripts\PriceCompareEntity-Deployment_SchemaAndData.sql" Transacted="True" />
+          </Object>
+        </ObjectGroup>
+        <ObjectGroup Name="DefaultConnection-Deployment" Order="2">
+          <Destination Path="Data Source=rdinvent.db.10518392.hostedresource.com%3bInitial Catalog=rdinvent%3bUser ID=rdinvent%3bPassword=%27Pankaj%400588%27%3b" />
+          <Object Type="dbFullSql">
+            <PreSource Path="Data Source=.\SQLEXPRESS%3bAttachDbFilename=|DataDirectory|aspnetdb.mdf%3bIntegrated Security=True%3bUser Instance=True" ScriptSchema="True" ScriptData="True" CopyAllFullTextCatalogs="False" />
+            <Source Path="obj\Release\AutoScripts\DefaultConnection-Deployment_SchemaAndData.sql" Transacted="True" />
+          </Object>
+        </ObjectGroup>
+      </Objects>
+    </PublishDatabaseSettings>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.4.1.10331.0\lib\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="FileHelpers">
+      <HintPath>..\..\..\Downloads\FileHelpers_2_0_0_bin_docs_wizard\FileHelpers\Binaries\DotNet 2.0\FileHelpers.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlAgilityPack">
+      <HintPath>..\packages\HtmlAgilityPack.1.4.3\lib\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList">
+      <HintPath>..\packages\PagedList.1.10\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Telerik.Web.Mvc">
+      <HintPath>..\packages\TelerikMvcExtensions.2011.2.712\lib\net40\Telerik.Web.Mvc.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controllers\aboutController.cs" />
+    <Compile Include="Controllers\accessoriesController.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Admin\AdminController.cs" />
+    <Compile Include="Controllers\Admin\ApplicationController.cs" />
+    <Compile Include="Controllers\Admin\BrandController.cs" />
+    <Compile Include="Controllers\Admin\CategoryController.cs" />
+    <Compile Include="Controllers\Admin\ClothingBrandController.cs" />
+    <Compile Include="Controllers\Admin\ManageProductController.cs" />
+    <Compile Include="Controllers\Admin\ManageNewsController.cs" />
+    <Compile Include="Controllers\Admin\MensController.cs" />
+    <Compile Include="Controllers\Admin\PricingController.cs" />
+    <Compile Include="Controllers\Admin\RetailerController.cs" />
+    <Compile Include="Controllers\Admin\WomensController.cs" />
+    <Compile Include="Controllers\appsController.cs" />
+    <Compile Include="Controllers\booksController.cs" />
+    <Compile Include="Controllers\brandsController.cs" />
+    <Compile Include="Controllers\flipController.cs" />
+    <Compile Include="Controllers\goController.cs" />
+    <Compile Include="Controllers\homeController.cs" />
+    <Compile Include="Controllers\laptopsController.cs" />
+    <Compile Include="Controllers\mobilesController.cs" />
+    <Compile Include="Controllers\newsController.cs" />
+    <Compile Include="Controllers\outController.cs" />
+    <Compile Include="Controllers\productController.cs" />
+    <Compile Include="Controllers\referController.cs" />
+    <Compile Include="Controllers\StoreController.cs" />
+    <Compile Include="Controllers\tabletsController.cs" />
+    <Compile Include="Controllers\televisionsController.cs" />
+    <Compile Include="Controllers\testController.cs" />
+    <Compile Include="Controllers\wardrobeController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\Application.cs" />
+    <Compile Include="Models\Brand.cs" />
+    <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\CategoryListModel.cs" />
+    <Compile Include="Models\ClothingBrand.cs" />
+    <Compile Include="Models\flipProductAPI.cs" />
+    <Compile Include="Models\GroupDropListExtensions.cs" />
+    <Compile Include="Models\men.cs" />
+    <Compile Include="Models\mobile.cs" />
+    <Compile Include="Models\NewsAndReview.cs" />
+    <Compile Include="Models\Picture.cs" />
+    <Compile Include="Models\PriceCompareEntity.cs" />
+    <Compile Include="Models\PriceCompareEntityInitializer.cs" />
+    <Compile Include="Models\PriceCompareStatic.cs" />
+    <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\Rating.cs" />
+    <Compile Include="Models\Retailer.cs" />
+    <Compile Include="Models\RetailerUrls.cs" />
+    <Compile Include="Models\Retailer_Product_Price.cs" />
+    <Compile Include="Models\tablets.cs" />
+    <Compile Include="Models\Term.cs" />
+    <Compile Include="Models\trial.cs" />
+    <Compile Include="Models\UpdatePricing.cs" />
+    <Compile Include="Models\women.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\BrandPicView.cs" />
+    <Compile Include="ViewModel\CatPicView.cs" />
+    <Compile Include="ViewModel\CatProView.cs" />
+    <Compile Include="ViewModel\flipkartWithRating.cs" />
+    <Compile Include="ViewModel\ProductPicView.cs" />
+    <Compile Include="ViewModel\ProResView.cs" />
+    <Compile Include="ViewModel\RetailerPicView.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\ASPNETDB.MDF" />
+    <Content Include="App_Data\aspnetdb_log.LDF">
+      <DependentUpon>ASPNETDB.MDF</DependentUpon>
+    </Content>
+    <Content Include="Content\2011.2.712\Default\editor.png" />
+    <Content Include="Content\2011.2.712\Default\imagebrowser.png" />
+    <Content Include="Content\2011.2.712\Default\loading.gif" />
+    <Content Include="Content\2011.2.712\Default\slider-h.gif" />
+    <Content Include="Content\2011.2.712\Default\slider-v.gif" />
+    <Content Include="Content\2011.2.712\Default\sprite-vertical.png" />
+    <Content Include="Content\2011.2.712\Default\sprite.png" />
+    <Content Include="Content\2011.2.712\Default\treeview-line.png" />
+    <Content Include="Content\2011.2.712\Default\treeview-nodes-rtl.png" />
+    <Content Include="Content\2011.2.712\Default\treeview-nodes.png" />
+    <Content Include="Content\2011.2.712\telerik.common.min.css" />
+    <Content Include="Content\2011.2.712\telerik.vista.min.css" />
+    <Content Include="Content\2011.2.712\Vista\editor.png" />
+    <Content Include="Content\2011.2.712\Vista\imagebrowser.png" />
+    <Content Include="Content\2011.2.712\Vista\loading.gif" />
+    <Content Include="Content\2011.2.712\Vista\slider-h.gif" />
+    <Content Include="Content\2011.2.712\Vista\slider-v.gif" />
+    <Content Include="Content\2011.2.712\Vista\sprite-vertical.png" />
+    <Content Include="Content\2011.2.712\Vista\sprite.png" />
+    <Content Include="Content\Images\Brands\2444-thumb.jpg" />
+    <Content Include="Content\Images\Brands\brnd-android-100.png" />
+    <Content Include="Content\Images\Brands\brnd-blackberry-100.png" />
+    <Content Include="Content\Images\Brands\brnd-micromax-100.png" />
+    <Content Include="Content\Images\Brands\brnd-nokia-100.png" />
+    <Content Include="Content\Images\Brands\brnd-samsung-100.png" />
+    <Content Include="Content\Images\Brands\htc-square.png" />
+    <Content Include="Content\Images\Brands\iphone-5s.jpg" />
+    <Content Include="Content\Images\Brands\laptop.png" />
+    <Content Include="Content\Images\Brands\mob-accessories-sq-100.png" />
+    <Content Include="Content\Images\Brands\open-book.png" />
+    <Content Include="Content\Images\Brands\sonyericsson-square.png" />
+    <Content Include="Content\Images\Featured\1hdtv.jpg" />
+    <Content Include="Content\Images\Featured\22.jpg" />
+    <Content Include="Content\Images\Featured\3tablets.jpg" />
+    <Content Include="Content\Images\Featured\4videogames.jpg" />
+    <Content Include="Content\Images\Featured\ah55-800.jpg" />
+    <Content Include="Content\Images\Featured\best-mobiles-under-15k-diwali.jpg" />
+    <Content Include="Content\Images\Featured\best-smartphones-2015-india-pricepan.jpg" />
+    <Content Include="Content\Images\Featured\books-33.jpg" />
+    <Content Include="Content\Images\Featured\books-banner-all.jpg" />
+    <Content Include="Content\Images\Featured\Can-Imago.jpg" />
+    <Content Include="Content\Images\Featured\casuals.jpg" />
+    <Content Include="Content\Images\Featured\dellvostro.jpg" />
+    <Content Include="Content\Images\Featured\Depositphotos-3158680-XL.jpg" />
+    <Content Include="Content\Images\Featured\elife-s51.jpg" />
+    <Content Include="Content\Images\Featured\ethnic-women.png" />
+    <Content Include="Content\Images\Featured\formals.jpg" />
+    <Content Include="Content\Images\Featured\galaxy-a5-33.jpg" />
+    <Content Include="Content\Images\Featured\gionee-elfie-s5-1-400x400-imae2syfzrqmfvfy.jpeg" />
+    <Content Include="Content\Images\Featured\Gionee-Elife.jpg" />
+    <Content Include="Content\Images\Featured\HTC-One-E8-1a.jpg" />
+    <Content Include="Content\Images\Featured\iphone-5s.jpg" />
+    <Content Include="Content\Images\Featured\iphone-6-pre.jpg" />
+    <Content Include="Content\Images\Featured\iphone5.jpg" />
+    <Content Include="Content\Images\Featured\lumia1020.jpg" />
+    <Content Include="Content\Images\Featured\lumia1520.jpg" />
+    <Content Include="Content\Images\Featured\lumia800.jpg" />
+    <Content Include="Content\Images\Featured\mens-pricepan.jpg" />
+    <Content Include="Content\Images\Featured\microsoft-news.jpg" />
+    <Content Include="Content\Images\Featured\moto-g.jpg" />
+    <Content Include="Content\Images\Featured\newsroom.jpg" />
+    <Content Include="Content\Images\Featured\nexus-7.jpg" />
+    <Content Include="Content\Images\Featured\note-edge.jpg" />
+    <Content Include="Content\Images\Featured\oppo-smartphones.jpg" />
+    <Content Include="Content\Images\Featured\philipsiron.jpg" />
+    <Content Include="Content\Images\Featured\playbook.jpg" />
+    <Content Include="Content\Images\Featured\sachin-playing-it-my-way-autobiography.jpeg" />
+    <Content Include="Content\Images\Featured\samsung-s5.jpg" />
+    <Content Include="Content\Images\Featured\samsung-s6-edge-home.jpg" />
+    <Content Include="Content\Images\Featured\samsung-smart.jpg" />
+    <Content Include="Content\Images\Featured\samsungledtv.jpg" />
+    <Content Include="Content\Images\Featured\sony-tv-33.jpg" />
+    <Content Include="Content\Images\Featured\tablets-33.jpg" />
+    <Content Include="Content\Images\Featured\tv-banner-all.jpg" />
+    <Content Include="Content\Images\Featured\western-women.jpg" />
+    <Content Include="Content\Images\Featured\windows-phone-8.1.jpg" />
+    <Content Include="Content\Images\Featured\womens-pricepan.jpg" />
+    <Content Include="Content\Images\Featured\wp81-review-banner.jpg" />
+    <Content Include="Content\Images\Retailers\retailer800000.jpg" />
+    <Content Include="Content\Images\Retailers\retailer800001.png" />
+    <Content Include="Content\Images\Retailers\retailer800002.png" />
+    <Content Include="Content\Images\Retailers\retailer800003.png" />
+    <Content Include="Content\Images\Retailers\retailer800004.png" />
+    <Content Include="Content\Images\Retailers\retailer800005.png" />
+    <Content Include="Content\Images\Retailers\retailer800006.jpg" />
+    <Content Include="Content\menu.css" />
+    <Content Include="Content\prettyPhoto\css\prettyPhoto.css" />
+    <Content Include="Content\prettyPhoto\images\prettyPhoto\default\default_thumb.png" />
+    <Content Include="Content\prettyPhoto\images\prettyPhoto\default\loader.gif" />
+    <Content Include="Content\prettyPhoto\images\prettyPhoto\default\sprite.png" />
+    <Content Include="Content\prettyPhoto\images\prettyPhoto\default\sprite_next.png" />
+    <Content Include="Content\prettyPhoto\images\prettyPhoto\default\sprite_prev.png" />
+    <Content Include="Content\prettyPhoto\images\prettyPhoto\default\sprite_x.png" />
+    <Content Include="Content\prettyPhoto\images\prettyPhoto\default\sprite_y.png" />
+    <Content Include="Content\styles.css" />
+    <Content Include="Content\themes\base\images\404-Pingu.jpg" />
+    <Content Include="Content\themes\base\images\about-us.jpg" />
+    <Content Include="Content\themes\base\images\about.gif" />
+    <Content Include="Content\themes\base\images\android-store.png" />
+    <Content Include="Content\themes\base\images\apple-store.png" />
+    <Content Include="Content\themes\base\images\baby_PC.jpg" />
+    <Content Include="Content\themes\base\images\banner.jpg" />
+    <Content Include="Content\themes\base\images\bg-site.png" />
+    <Content Include="Content\themes\base\images\blackBG.jpg" />
+    <Content Include="Content\themes\base\images\blog-coming.JPG" />
+    <Content Include="Content\themes\base\images\blueBG.jpg" />
+    <Content Include="Content\themes\base\images\brand-apple.gif" />
+    <Content Include="Content\themes\base\images\brand-dell.gif" />
+    <Content Include="Content\themes\base\images\brand-facebook.jpg" />
+    <Content Include="Content\themes\base\images\brand-nokia.gif" />
+    <Content Include="Content\themes\base\images\brand-samsung.gif" />
+    <Content Include="Content\themes\base\images\brand-twitter.gif" />
+    <Content Include="Content\themes\base\images\brand-twitter.png" />
+    <Content Include="Content\themes\base\images\button.png" />
+    <Content Include="Content\themes\base\images\button_mouse over.png" />
+    <Content Include="Content\themes\base\images\button_sprite.jpg" />
+    <Content Include="Content\themes\base\images\camera.jpg" />
+    <Content Include="Content\themes\base\images\cameralens.jpg" />
+    <Content Include="Content\themes\base\images\blue-bg.gif" />
+    <Content Include="Content\themes\base\images\coffeemaker.jpg" />
+    <Content Include="Content\themes\base\images\download.png" />
+    <Content Include="Content\themes\base\images\eyaas_PP_AD.jpg" />
+    <Content Include="Content\themes\base\images\facebookPlug.png" />
+    <Content Include="Content\themes\base\images\fb_icon_325x325.png" />
+    <Content Include="Content\themes\base\images\featured1.jpg" />
+    <Content Include="Content\themes\base\images\featured2.jpg" />
+    <Content Include="Content\themes\base\images\featured3.jpg" />
+    <Content Include="Content\themes\base\images\forshare.png" />
+    <Content Include="Content\themes\base\images\forsharenews.png" />
+    <Content Include="Content\themes\base\images\HP_sprite.png" />
+    <Content Include="Content\themes\base\images\internetsecurity.jpg" />
+    <Content Include="Content\themes\base\images\laptops.jpg" />
+    <Content Include="Content\themes\base\images\lcdtv.jpg" />
+    <Content Include="Content\themes\base\images\links\links\books.jpg" />
+    <Content Include="Content\themes\base\images\links\links\computers.jpg" />
+    <Content Include="Content\themes\base\images\links\links\electronics.jpg" />
+    <Content Include="Content\themes\base\images\links\links\Mobile.jpg" />
+    <Content Include="Content\themes\base\images\links\links\Untitled-2.jpg" />
+    <Content Include="Content\themes\base\images\newBG.jpg" />
+    <Content Include="Content\themes\base\images\NewLogo.png" />
+    <Content Include="Content\themes\base\images\noDefaultImage_100.gif" />
+    <Content Include="Content\themes\base\images\operatingsystem.jpg" />
+    <Content Include="Content\themes\base\images\Outline.png" />
+    <Content Include="Content\themes\base\images\pankajDesign.png" />
+    <Content Include="Content\themes\base\images\pin-follow.png" />
+    <Content Include="Content\themes\base\images\priceHead.jpg" />
+    <Content Include="Content\themes\base\images\pricepanBG.jpg" />
+    <Content Include="Content\themes\base\images\pricepan_logo.png" />
+    <Content Include="Content\themes\base\images\pricetag-logo.png" />
+    <Content Include="Content\themes\base\images\refrigerator.jpg" />
+    <Content Include="Content\themes\base\images\share_bg.png" />
+    <Content Include="Content\themes\base\images\smartphone.jpg" />
+    <Content Include="Content\themes\base\images\sprite_US.png" />
+    <Content Include="Content\themes\base\images\tablets.jpg" />
+    <Content Include="Content\themes\base\images\twitterICON.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\images\vacuum cleaner.jpg" />
+    <Content Include="Content\themes\base\images\wahingmachine.jpg" />
+    <Content Include="Content\themes\base\images\wp-store.jpg" />
+    <Content Include="Content\themes\base\jquery.ui.accordion.css" />
+    <Content Include="Content\themes\base\jquery.ui.all.css" />
+    <Content Include="Content\themes\base\jquery.ui.autocomplete.css" />
+    <Content Include="Content\themes\base\jquery.ui.base.css" />
+    <Content Include="Content\themes\base\jquery.ui.button.css" />
+    <Content Include="Content\themes\base\jquery.ui.core.css" />
+    <Content Include="Content\themes\base\jquery.ui.datepicker.css" />
+    <Content Include="Content\themes\base\jquery.ui.dialog.css" />
+    <Content Include="Content\themes\base\jquery.ui.progressbar.css" />
+    <Content Include="Content\themes\base\jquery.ui.resizable.css" />
+    <Content Include="Content\themes\base\jquery.ui.selectable.css" />
+    <Content Include="Content\themes\base\jquery.ui.slider.css" />
+    <Content Include="Content\themes\base\jquery.ui.tabs.css" />
+    <Content Include="Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="Content\ui-lightness\images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
+    <Content Include="Content\ui-lightness\images\ui-bg_diagonals-thick_20_666666_40x40.png" />
+    <Content Include="Content\ui-lightness\images\ui-bg_flat_10_000000_40x100.png" />
+    <Content Include="Content\ui-lightness\images\ui-bg_glass_100_f6f6f6_1x400.png" />
+    <Content Include="Content\ui-lightness\images\ui-bg_glass_100_fdf5ce_1x400.png" />
+    <Content Include="Content\ui-lightness\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\ui-lightness\images\ui-bg_gloss-wave_35_f6a828_500x100.png" />
+    <Content Include="Content\ui-lightness\images\ui-bg_highlight-soft_100_eeeeee_1x100.png" />
+    <Content Include="Content\ui-lightness\images\ui-bg_highlight-soft_75_ffe45c_1x100.png" />
+    <Content Include="Content\ui-lightness\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\ui-lightness\images\ui-icons_228ef1_256x240.png" />
+    <Content Include="Content\ui-lightness\images\ui-icons_ef8c08_256x240.png" />
+    <Content Include="Content\ui-lightness\images\ui-icons_ffd27a_256x240.png" />
+    <Content Include="Content\ui-lightness\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\ui-lightness\jquery-ui-1.8.18.custom.css" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="iphone-6-price-compare-preorder.html" />
+    <Content Include="news-images\a17.png" />
+    <Content Include="news-images\amazon.png" />
+    <Content Include="news-images\flipkart.png" />
+    <Content Include="news-images\homeshop18.png" />
+    <Content Include="news-images\indiatimes.png" />
+    <Content Include="news-images\infibeam.png" />
+    <Content Include="news-images\loading.gif" />
+    <Content Include="news-images\loading2.gif" />
+    <Content Include="news-images\nokia.jpg" />
+    <Content Include="news-images\Pc_bunkbed_cashback._V330481046_.png" />
+    <Content Include="news-images\republic-day-offers.jpg" />
+    <Content Include="news-images\samsung-mega-6-01.jpg" />
+    <Content Include="news-images\samsung-mega-6-02.jpg" />
+    <Content Include="news-images\samsung-mega-6-03.jpg" />
+    <Content Include="news-images\samsung-mega-6-04.jpg" />
+    <Content Include="news-images\snapdeal.png" />
+    <Content Include="news-images\uread.png" />
+    <Content Include="republic-day-offers.html" />
+    <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <Content Include="Scripts\jquery-ui-1.8.18.custom.min.js" />
+    <Content Include="Scripts\jquery.dcmegamenu.1.3.3.js" />
+    <Content Include="Scripts\jquery.dcmegamenu.1.3.3.min.js" />
+    <Content Include="Scripts\jquery.hoverIntent.minified.js" />
+    <Content Include="Scripts\jquery.nivo.slider.js" />
+    <Content Include="Scripts\jquery.nivo.slider.pack.js" />
+    <Content Include="Content\nivo-slider.css" />
+    <Content Include="Scripts\2011.2.712\jquery-1.5.1.min.js" />
+    <Content Include="Scripts\2011.2.712\jquery.validate.min.js" />
+    <Content Include="Scripts\2011.2.712\telerik.autocomplete.min.js" />
+    <Content Include="Scripts\2011.2.712\telerik.calendar.min.js" />
+    <Content Include="Scripts\2011.2.712\telerik.chart.min.js" />
+    <Content Include="Scripts\2011.2.712\telerik.combobox.min.js" />
+    <Content Include="Scripts\2011.2.712\telerik.common.min.js" />
+    <Content Include="Scripts\2011.2.712\telerik.datepicker.min.js" />
+    <Content Include="Scripts\2011.2.712\telerik.datetimepicker.min.js" />
+    <Content Include="Scripts\2011.2.712\telerik.draganddrop.min.js" />
+    <Content Include="Scripts\2011.2.712\telerik.editor.min.js" />
+    <Content Include="Scripts\2011.2.712\telerik.grid.editing.min.js" />
+    <Content Include="Scripts\2011.2.712\telerik.grid.filtering.min.js" />
+    <Content Include="Scripts\2011.2.712\telerik.grid.grouping.min.js" />
+    <Content Include="Scripts\2011.2.712\telerik.grid.min.js" />
+    <Content Include="Scripts\2011.2.712\telerik.grid.reordering.min.js" />
+    <Content Include="Scripts\2011.2.712\telerik.grid.resizing.min.js" />
+    <Content Include="Scripts\2011.2.712\telerik.imagebrowser.min.js" />
+    <Content Include="Scripts\2011.2.712\telerik.list.min.js" />
+    <Content Include="Scripts\2011.2.712\telerik.menu.min.js" />
+    <Content Include="Scripts\2011.2.712\telerik.panelbar.min.js" />
+    <Content Include="Scripts\2011.2.712\telerik.slider.min.js" />
+    <Content Include="Scripts\2011.2.712\telerik.splitter.min.js" />
+    <Content Include="Scripts\2011.2.712\telerik.tabstrip.min.js" />
+    <Content Include="Scripts\2011.2.712\telerik.textbox.min.js" />
+    <Content Include="Scripts\2011.2.712\telerik.timepicker.min.js" />
+    <Content Include="Scripts\2011.2.712\telerik.treeview.min.js" />
+    <Content Include="Scripts\2011.2.712\telerik.upload.min.js" />
+    <Content Include="Scripts\2011.2.712\telerik.window.min.js" />
+    <Content Include="Scripts\jquery-1.5.1-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.5.1.js" />
+    <Content Include="Scripts\jquery-1.5.1.min.js" />
+    <Content Include="Scripts\jquery-ui-1.8.11.js" />
+    <Content Include="Scripts\jquery-ui-1.8.11.min.js" />
+    <Content Include="Scripts\jquery.prettyPhoto.js" />
+    <Content Include="Scripts\jquery.sharrre.js" />
+    <Content Include="Scripts\jquery.sharrre.min.js" />
+    <Content Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jssor.js" />
+    <Content Include="Scripts\jssor.slider.js" />
+    <Content Include="Scripts\jssor.slider.min.js" />
+    <Content Include="Scripts\jssor.slider.mini.js" />
+    <Content Include="Scripts\menu-pricepan.js" />
+    <Content Include="Scripts\modernizr-1.7.js" />
+    <Content Include="Scripts\modernizr-1.7.min.js" />
+    <Content Include="Scripts\script.js" />
+    <Content Include="uploadify\cancel.png" />
+    <Content Include="uploadify\expressInstall.swf" />
+    <Content Include="uploadify\jquery-1.4.2.min.js" />
+    <Content Include="uploadify\jquery.uploadify.v2.1.4.js" />
+    <Content Include="uploadify\jquery.uploadify.v2.1.4.min.js" />
+    <Content Include="uploadify\swfobject.js" />
+    <Content Include="uploadify\uploadify.allglyphs.swf" />
+    <Content Include="uploadify\uploadify.css" />
+    <Content Include="uploadify\uploadify.swf" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\MicrosoftAjax.js" />
+    <Content Include="Scripts\MicrosoftAjax.debug.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.debug.js" />
+    <Content Include="Scripts\MicrosoftMvcValidation.js" />
+    <Content Include="Scripts\MicrosoftMvcValidation.debug.js" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\home\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\ManageProduct\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Content\Images\Categories\" />
+    <Folder Include="Content\Images\Products\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\home\search.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\home\Pagination.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Category\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Category\Create.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Category\Edit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="uploadify\check.php" />
+    <None Include="uploadify\com\adobe\air\logging\FileTarget.as" />
+    <None Include="uploadify\com\adobe\crypto\HMAC.as" />
+    <None Include="uploadify\com\adobe\crypto\MD5.as" />
+    <None Include="uploadify\com\adobe\crypto\MD5Stream.as" />
+    <None Include="uploadify\com\adobe\crypto\SHA1.as" />
+    <None Include="uploadify\com\adobe\crypto\SHA224.as" />
+    <None Include="uploadify\com\adobe\crypto\SHA256.as" />
+    <None Include="uploadify\com\adobe\crypto\WSSEUsernameToken.as" />
+    <None Include="uploadify\com\adobe\errors\IllegalStateError.as" />
+    <None Include="uploadify\com\adobe\fileformats\vcard\Address.as" />
+    <None Include="uploadify\com\adobe\fileformats\vcard\Email.as" />
+    <None Include="uploadify\com\adobe\fileformats\vcard\Phone.as" />
+    <None Include="uploadify\com\adobe\fileformats\vcard\VCard.as" />
+    <None Include="uploadify\com\adobe\fileformats\vcard\VCardParser.as" />
+    <None Include="uploadify\com\adobe\images\BitString.as" />
+    <None Include="uploadify\com\adobe\images\JPGEncoder.as" />
+    <None Include="uploadify\com\adobe\images\PNGEncoder.as" />
+    <None Include="uploadify\com\adobe\net\DynamicURLLoader.as" />
+    <None Include="uploadify\com\adobe\net\IURIResolver.as" />
+    <None Include="uploadify\com\adobe\net\MimeTypeMap.as" />
+    <None Include="uploadify\com\adobe\net\proxies\RFC2817Socket.as" />
+    <None Include="uploadify\com\adobe\net\URI.as" />
+    <None Include="uploadify\com\adobe\net\URIEncodingBitmap.as" />
+    <None Include="uploadify\com\adobe\protocols\dict\Database.as" />
+    <None Include="uploadify\com\adobe\protocols\dict\Definition.as" />
+    <None Include="uploadify\com\adobe\protocols\dict\Dict.as" />
+    <None Include="uploadify\com\adobe\protocols\dict\DictionaryServer.as" />
+    <None Include="uploadify\com\adobe\protocols\dict\events\ConnectedEvent.as" />
+    <None Include="uploadify\com\adobe\protocols\dict\events\DatabaseEvent.as" />
+    <None Include="uploadify\com\adobe\protocols\dict\events\DefinitionEvent.as" />
+    <None Include="uploadify\com\adobe\protocols\dict\events\DefinitionHeaderEvent.as" />
+    <None Include="uploadify\com\adobe\protocols\dict\events\DictionaryServerEvent.as" />
+    <None Include="uploadify\com\adobe\protocols\dict\events\DisconnectedEvent.as" />
+    <None Include="uploadify\com\adobe\protocols\dict\events\ErrorEvent.as" />
+    <None Include="uploadify\com\adobe\protocols\dict\events\MatchEvent.as" />
+    <None Include="uploadify\com\adobe\protocols\dict\events\MatchStrategiesEvent.as" />
+    <None Include="uploadify\com\adobe\protocols\dict\events\NoMatchEvent.as" />
+    <None Include="uploadify\com\adobe\protocols\dict\MatchStrategy.as" />
+    <None Include="uploadify\com\adobe\protocols\dict\Response.as" />
+    <None Include="uploadify\com\adobe\protocols\dict\util\CompleteResponseEvent.as" />
+    <None Include="uploadify\com\adobe\protocols\dict\util\SocketHelper.as" />
+    <None Include="uploadify\com\adobe\serialization\json\JSON.as" />
+    <None Include="uploadify\com\adobe\serialization\json\JSONDecoder.as" />
+    <None Include="uploadify\com\adobe\serialization\json\JSONEncoder.as" />
+    <None Include="uploadify\com\adobe\serialization\json\JSONParseError.as" />
+    <None Include="uploadify\com\adobe\serialization\json\JSONToken.as" />
+    <None Include="uploadify\com\adobe\serialization\json\JSONTokenizer.as" />
+    <None Include="uploadify\com\adobe\serialization\json\JSONTokenType.as" />
+    <None Include="uploadify\com\adobe\utils\ArrayUtil.as" />
+    <None Include="uploadify\com\adobe\utils\DateUtil.as" />
+    <None Include="uploadify\com\adobe\utils\DictionaryUtil.as" />
+    <None Include="uploadify\com\adobe\utils\IntUtil.as" />
+    <None Include="uploadify\com\adobe\utils\NumberFormatter.as" />
+    <None Include="uploadify\com\adobe\utils\StringUtil.as" />
+    <None Include="uploadify\com\adobe\utils\XMLUtil.as" />
+    <None Include="uploadify\com\adobe\webapis\events\ServiceEvent.as" />
+    <None Include="uploadify\com\adobe\webapis\ServiceBase.as" />
+    <None Include="uploadify\com\adobe\webapis\URLLoaderBase.as" />
+    <None Include="uploadify\uploadify.fla" />
+    <None Include="uploadify\uploadify.php" />
+    <Content Include="Views\Brand\Index.cshtml" />
+    <Content Include="Views\Brand\Create.cshtml" />
+    <Content Include="Views\Brand\Edit.cshtml" />
+    <Content Include="Views\Retailer\Index.cshtml" />
+    <Content Include="Views\Retailer\Create.cshtml" />
+    <Content Include="Views\Retailer\Edit.cshtml" />
+    <Content Include="Views\ManageProduct\Create.cshtml" />
+    <Content Include="Views\ManageProduct\Edit.cshtml" />
+    <Content Include="Views\Pricing\Index.cshtml" />
+    <Content Include="Views\Pricing\Create.cshtml" />
+    <Content Include="Views\Pricing\Edit.cshtml" />
+    <Content Include="Views\product\Index.cshtml" />
+    <Content Include="Views\Account\ChangePassword.cshtml" />
+    <Content Include="Views\Account\ChangePasswordSuccess.cshtml" />
+    <Content Include="Views\Account\LogOn.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Shared\RecentSearches.cshtml" />
+    <Content Include="Views\Shared\RecentlyAdded.cshtml" />
+    <Content Include="Views\Admin\Dashboard.cshtml" />
+    <Content Include="Views\Store\Section.cshtml" />
+    <Content Include="Views\Shared\NoSuchRootCat.cshtml" />
+    <Content Include="Views\Shared\RecentlyAddedForCat.cshtml" />
+    <Content Include="Views\about\Index.cshtml" />
+    <Content Include="Views\about\terms.cshtml" />
+    <Content Include="Views\Pricing\UpdateSome.cshtml" />
+    <Content Include="Views\Shared\_LogOnPartial.cshtml" />
+    <Content Include="Views\Retailer\UpdateHomeShopUrl.cshtml" />
+    <Content Include="Views\Retailer\Yebhi.cshtml" />
+    <Content Include="Views\Retailer\SnapDeal.cshtml" />
+    <Content Include="Views\Retailer\IndiaTimes.cshtml" />
+    <Content Include="Views\Retailer\FetchFlip.cshtml" />
+    <Content Include="Views\Retailer\FetchInfi.cshtml" />
+    <Content Include="Views\Retailer\FetchIndia.cshtml" />
+    <Content Include="Views\Retailer\FetchGeneral.cshtml" />
+    <Content Include="Views\Retailer\FetchSnap.cshtml" />
+    <Content Include="Views\Retailer\FetchHome.cshtml" />
+    <Content Include="Views\Retailer\FetchTimes.cshtml" />
+    <Content Include="Views\Retailer\FetchYebhi.cshtml" />
+    <Content Include="Views\ManageNews\Index.cshtml" />
+    <Content Include="Views\ManageNews\Create.cshtml" />
+    <Content Include="Views\ManageNews\Edit.cshtml" />
+    <Content Include="Views\news\Index.cshtml" />
+    <Content Include="Views\news\story.cshtml" />
+    <Content Include="Views\news\Pagination.cshtml" />
+    <Content Include="Views\Application\Index.cshtml" />
+    <Content Include="Views\Application\Create.cshtml" />
+    <Content Include="Views\Application\Edit.cshtml" />
+    <Content Include="Views\apps\Index.cshtml" />
+    <Content Include="Views\apps\Pagination.cshtml" />
+    <Content Include="Views\apps\ios.cshtml" />
+    <Content Include="Views\apps\wp.cshtml" />
+    <Content Include="Views\apps\android.cshtml" />
+    <Content Include="Views\apps\article.cshtml" />
+    <Content Include="Views\Shared\RecentlyAddedSlide.cshtml" />
+    <Content Include="Views\Shared\RecentlyAddedNews.cshtml" />
+    <Content Include="Views\Shared\RecentlyAddedForBooks.cshtml" />
+    <Content Include="Views\Shared\RecentlyAddedForMobiles.cshtml" />
+    <Content Include="Views\Shared\RecentlyAddedForComputers.cshtml" />
+    <Content Include="Views\Shared\RecentlyAddedForElectronics.cshtml" />
+    <Content Include="Views\Shared\RecentlyAddedApps.cshtml" />
+    <Content Include="Views\brands\name.cshtml" />
+    <Content Include="Views\brands\Pagination.cshtml" />
+    <Content Include="Views\Shared\RelatedProducts.cshtml" />
+    <Content Include="Views\home\category.cshtml" />
+    <Content Include="Views\test\Index.cshtml" />
+    <Content Include="Views\test\Specs.cshtml" />
+    <Content Include="Views\books\Index.cshtml" />
+    <Content Include="Views\books\genre.cshtml" />
+    <Content Include="Views\books\Pagination.cshtml" />
+    <Content Include="Views\mobiles\Index.cshtml" />
+    <Content Include="Views\mobiles\Pagination2.cshtml" />
+    <Content Include="Views\mobiles\brand.cshtml" />
+    <Content Include="Views\mobiles\Pagination.cshtml" />
+    <Content Include="Views\laptops\Index.cshtml" />
+    <Content Include="Views\laptops\Pagination.cshtml" />
+    <Content Include="Views\laptops\brand.cshtml" />
+    <Content Include="Views\laptops\Pagination2.cshtml" />
+    <Content Include="Views\televisions\Index.cshtml" />
+    <Content Include="Views\televisions\brand.cshtml" />
+    <Content Include="Views\televisions\Pagination.cshtml" />
+    <Content Include="Views\televisions\Pagination2.cshtml" />
+    <Content Include="Views\tablets\Index.cshtml" />
+    <Content Include="Views\tablets\Pagination.cshtml" />
+    <Content Include="Views\tablets\Pagination2.cshtml" />
+    <Content Include="Views\tablets\brand.cshtml" />
+    <Content Include="Views\accessories\Index.cshtml" />
+    <Content Include="Views\accessories\Pagination.cshtml" />
+    <Content Include="Views\accessories\brand.cshtml" />
+    <Content Include="Views\accessories\Pagination2.cshtml" />
+    <Content Include="Views\Shared\PopularProducts.cshtml" />
+    <Content Include="Views\Mens\Create.cshtml" />
+    <Content Include="Views\Mens\Index.cshtml" />
+    <Content Include="Views\ClothingBrand\Index.cshtml" />
+    <Content Include="Views\ClothingBrand\Create.cshtml" />
+    <Content Include="Views\ClothingBrand\Edit.cshtml" />
+    <Content Include="Views\Mens\Edit.cshtml" />
+    <Content Include="Views\Womens\Index.cshtml" />
+    <Content Include="Views\Womens\Create.cshtml" />
+    <Content Include="Views\Womens\Edit.cshtml" />
+    <Content Include="Views\wardrobe\Index.cshtml" />
+    <Content Include="Views\wardrobe\mens.cshtml" />
+    <Content Include="Views\wardrobe\womens.cshtml" />
+    <Content Include="Views\wardrobe\list.cshtml" />
+    <Content Include="Views\wardrobe\list2.cshtml" />
+    <Content Include="Views\wardrobe\Pagination.cshtml" />
+    <Content Include="Views\wardrobe\Pagination2.cshtml" />
+    <Content Include="Views\wardrobe\item.cshtml" />
+    <Content Include="Views\Shared\RelatedProductsForMen.cshtml" />
+    <Content Include="Views\wardrobe\product.cshtml" />
+    <Content Include="Views\Shared\RelatedProductsForWomen.cshtml" />
+    <Content Include="Views\Shared\RecentForWomen.cshtml" />
+    <Content Include="Views\mobiles\price.cshtml" />
+    <Content Include="Views\mobiles\Pagination3.cshtml" />
+    <Content Include="Views\laptops\price.cshtml" />
+    <Content Include="Views\laptops\Pagination3.cshtml" />
+    <Content Include="Views\tablets\price.cshtml" />
+    <Content Include="Views\televisions\price.cshtml" />
+    <Content Include="Views\tablets\Pagination3.cshtml" />
+    <Content Include="Views\televisions\Pagination3.cshtml" />
+    <Content Include="Views\flip\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>60698</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost/PriceCompare</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

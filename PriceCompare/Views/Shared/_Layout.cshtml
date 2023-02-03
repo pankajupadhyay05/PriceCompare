@@ -1,0 +1,166 @@
+﻿@using Telerik.Web.Mvc.UI;
+<!DOCTYPE html>
+<html>
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# og_pricepan: http://ogp.me/ns/fb/og_pricepan#">
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE; IE=edge;">
+    <meta name="description" content="@ViewBag.Description" />
+    <meta name="title" content="@ViewBag.Title" />
+    <meta name="google-site-verification" content="zYT0dZ-m3J2a53C7X2bCzJjw-288gK7gIEFveTqbo1Q" />
+    <link rel="publisher" href="https://plus.google.com/+Pricepan">
+    <meta property="og:title" content="@ViewBag.LikeTitle"/>
+    <link rel="shortcut icon" href="http://www.pricepan.com/favicon.ico" />
+    <meta property="og:type" content="@ViewBag.LikeType"/>
+    <meta property="og:url" content="@ViewBag.LikeUrl"/>
+    <meta property="og:image" content="@ViewBag.LikeImage"/>
+    <meta property="og:site_name" content="Pricepan"/>
+    <meta property="og:description" content="@ViewBag.Description"/>
+    <meta property="fb:app_id" content="224988984248796"/>
+    <link href="@Url.Content("~/Content/Site.css")?v=19" rel="stylesheet" type="text/css" />
+    <script src="/Scripts/jquery-1.9.1.min.js"></script>
+    <script src="/Scripts/script.js"></script>
+    <link rel="alternate" media="screen" href="@HttpContext.Current.Request.Url.AbsoluteUri.Replace("http://www.","http://m.")">
+    
+    
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-3201048-13', 'pricepan.com');
+    ga('send', 'pageview');
+
+</script>
+
+</head>
+
+<body>
+    <div id="headerAndContent">
+        @if (User.IsInRole("Administrator"))
+        {
+            <div class="admin-bar">
+                <span>@User.Identity.Name |</span>
+                <span> @Html.ActionLink("Log Off", "LogOff", "Account") |</span>
+                <span> @Html.ActionLink("DASHBOARD", "Dashboard", "Admin")</span>
+            </div>
+        }
+        else
+        {
+            <div class="admin-bar">
+                <span>India's First and only REAL-TIME Comparison Engine &nbsp;||&nbsp; </span>
+                <span> @Html.ActionLink("ABOUT", "Index", "about")</span>
+            </div>
+        }
+        <div class="logoAndNav">
+            <div>
+                <div class="left-logo">
+                    <a href="http://www.pricepan.com">
+                        <img src="/Content/themes/base/images/Logo.png" alt="Pricepan India" />
+                    </a> 
+                </div>
+                <div class="right-search">
+                    <form action="/search" method="get">    
+                        <input type="text" id="query" name="query" class="searchTextbox" value="@ViewBag.query" placeholder="Looking for something" />
+                        <input type="submit" value="" class="searchButton" />
+                    </form>
+                </div>
+                <div class="clear"></div>
+            </div><br />
+            <div>
+                <div class="dfsde">
+                <div id='cssmenu'>
+<ul>
+   <li><a class="first" href='/'>Home</a></li>
+   <li class='has-sub'><a href='/books/'>Books</a>
+      <ul>
+         <li><a href='/books/fiction'>Fiction</a></li>
+         <li><a href='/books/non-fiction'>Non-Fiction</a></li>
+      </ul>
+   </li>
+   <li class='has-sub'><a href='/mobiles/'>Mobiles</a>
+      <ul>
+         <li><a href='/mobiles/samsung'>Samsung</a></li>
+         <li><a href='/mobiles/nokia'>Nokia</a></li>
+         <li><a href='/mobiles/htc'>HTC</a></li>
+         <li><a href='/mobiles/apple'>Apple</a></li>
+         <li><a href='/mobiles/micromax'>Micromax</a></li>
+         <li><a href='/mobiles/blackberry'>BlackBerry</a></li>
+         <li><a href='/mobiles/lg'>LG</a></li>
+         <li><a href='/mobiles/lenovo'>Lenovo</a></li>
+         <li><a href='/mobiles/'>All Brands</a></li>
+      </ul>  
+   </li>
+   <li class='has-sub'><a href='/tablets/'>Tablets</a>
+      <ul>
+         <li><a href='/tablets/samsung'>Samsung</a></li>
+         <li><a href='/tablets/asus'>Asus</a></li>
+         <li><a href='/tablets/apple'>Apple</a></li>
+         <li><a href='/tablets/dell'>Dell</a></li>
+         <li><a href='/tablets/lenovo'>Lenovo</a></li>
+         <li><a href='/tablets/'>All Brands</a></li>
+      </ul>
+   </li>
+   <li class='has-sub'><a href='/laptops/'>Laptops</a>
+      <ul>
+         <li><a href='/laptops/toshiba'>Toshiba</a></li>
+         <li><a href='/laptops/dell'>Dell</a></li>
+         <li><a href='/laptops/lenovo'>Lenovo</a></li>
+         <li><a href='/laptops/hp'>HP</a></li>
+         <li><a href='/laptops/acer'>Acer</a></li>
+         <li><a href='/laptops/'>All Brands</a></li>
+      </ul>
+   </li>  
+   <li class='has-sub'><a href='/televisions/'>televisions</a>
+      <ul>
+         <li><a href='/televisions/sony'>Sony</a></li>
+         <li><a href='/televisions/samsung'>Samsung</a></li>
+         <li><a href='/televisions/lg'>LG</a></li>
+         <li><a href='/televisions/panasonic'>Panasonic</a></li>
+         <li><a href='/televisions/toshiba'>Toshiba</a></li>
+         <li><a href='/televisions/'>All Brands</a></li>
+      </ul>  
+   </li>
+   <li><a href='/accessories/'>Accessories</a>
+   </li>
+   <li class='has-sub'><a href='/wardrobe/'>WARDROBE</a>
+      <ul>
+         <li><a href='/wardrobe/mens'>Men's</a></li>
+         <li><a href='/wardrobe/womens'>Women's</a></li>
+      </ul>
+   </li>
+</ul>
+</div>
+                </div>
+                <div style="float:right;"><a class="dfrde-a1" href="/apps/">apps</a><a class="dfrde-a2" href="/news/">news</a></div>
+                <div class="clear"></div>
+            </div>
+            <!--<div id="menu-div">
+                <a href="/books" class="menu-links">books</a>
+                <a href="/mobiles" class="menu-links">mobiles</a>
+                <a href="/tablets" class="menu-links">tablets</a>
+                <a href="/laptops" class="menu-links">laptops</a>
+                <a href="/televisions" class="menu-links">televisions</a>
+                <a href="/news" class="menu-links-right">news</a>
+                <a href="/apps" class="menu-links-right-2">apps</a>
+                <div class="clear"></div>
+            </div>-->    
+        </div>     
+    </div>
+    <div id="content">
+        @RenderBody()
+    </div>
+    <div id="footer">
+        <div id="footer-text">
+            <ul>
+                <li>&copy; PricePan 2014 - 2015&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Html.ActionLink("Terms and Conditions", "terms", "about")&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+            </ul>
+        </div>
+    </div>
+    @Html.Telerik().ScriptRegistrar().jQuery(false).jQueryValidation(false)
+</body>
+</html>

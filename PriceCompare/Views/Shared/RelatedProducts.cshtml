@@ -1,0 +1,36 @@
+﻿@model IEnumerable<PriceCompare.Models.Product>
+@helper Truncate(string input, int length)
+    {
+    if (input.Length <= length)
+    {
+            @input
+    }
+    else
+    { 
+        @input.Substring(0, length)<text>...</text>
+    }
+}
+
+<div style="width:100%;border:2px #CCC inset;border-radius:8px;">
+    <div style="margin:5px 0px 5px 5px;color:#4D8703;font-weight:bold;font-size:0.9em">Related Products</div>
+    <div class="bottomProductsRelated">
+        @foreach (var product in Model)
+        {
+            <div class="float">
+                <div class="imageInFloat">
+                    <a href="@Url.Action("Index", new { controller = "product", id = product.Id, title = product.Name.Replace(", "," ").Replace(" ", "-").ToLower() })"><img class="productImageLeft" alt="@product.Name" src="@product.Picture.PictureUrl" /></a>
+                </div>
+                <div style="font-size:0.7em;">
+                    @Truncate(product.Name, 30)
+                </div>
+                <div style="font-size:0.7em;">
+                    at @product.Retailer_Product_Prices.Count Sellers
+                </div>
+                <div>
+                    <a style="font-size:0.7em;color:#009933" href="@Url.Action("Index", new { controller = "product", id = product.Id, title = product.Name.Replace(", "," ").Replace(" ", "-").ToLower() })">COMPARE PRICE</a>
+                </div>
+            </div>
+        }
+        <div class="clear"></div>
+    </div>
+</div>

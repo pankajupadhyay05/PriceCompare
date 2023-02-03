@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "Dashboard";
+}
+
+<div class="contentHolder">
+    <div class="adminHeading">Dashboard</div>
+    <div id="adminParts"><br /><br />
+        <div id="leftPart">@Html.ActionLink("Categories", "Index", "Category")<br />
+            <span>@Html.ActionLink("Add New Item", "Create", "Category") </span><span> -- @Html.ActionLink("Edit Existing", "Index", "Category")</span>
+        </div>
+        <div id="rightPart">@Html.ActionLink("Brands", "Index", "Brand")<br />
+            <span>@Html.ActionLink("Add New Item", "Create", "Brand") </span><span> -- @Html.ActionLink("Edit Existing", "Index", "Brand")</span>
+        </div>
+        <div class="clear"></div><br />
+        <div id="leftPart">@Html.ActionLink("Products", "Index", "ManageProduct")<br />
+            <span>@Html.ActionLink("Add New Item", "Create", "ManageProduct") </span><span> -- @Html.ActionLink("Edit Existing", "Index", "ManageProduct")</span>
+        </div>
+        <div id="rightPart">@Html.ActionLink("Retailers", "Index", "Retailer")<br />
+            <span>@Html.ActionLink("Add New Item", "Create", "Retailer") </span><span> -- @Html.ActionLink("Edit Existing", "Index", "Retailer")</span>
+        </div>
+        <div class="clear"></div><br />
+        <div id="leftPart">@Html.ActionLink("Pricing", "Index", "Pricing")<br />
+            <span>@Html.ActionLink("Add New Item", "Create", "Pricing") </span><span> -- @Html.ActionLink("Edit Existing", "Index", "Pricing")</span>
+        </div>
+        <div id="rightPart">@Html.ActionLink("Application", "Index", "Application")<br />
+            <span>@Html.ActionLink("Add New Item", "Create", "Application") </span><span> -- @Html.ActionLink("Edit Existing", "Index", "Application")</span>
+        </div>
+        <div class="clear"></div><br />
+        <div id="leftPart">@Html.ActionLink("News and Reviews", "Index", "ManageNews")<br />
+            <span>@Html.ActionLink("Add New Item", "Create", "ManageNews") </span><span> -- @Html.ActionLink("Edit Existing", "Index", "ManageNews")</span>
+        </div>
+        <div id="rightPart">@Html.ActionLink("Clothing Brand", "Index", "ClothingBrand")<br />
+            <span>@Html.ActionLink("Add New Item", "Create", "ClothingBrand") </span><span> -- @Html.ActionLink("Edit Existing", "Index", "ClothingBrand")</span>
+        </div>
+        <div class="clear"></div><br />
+        <div id="leftPart">@Html.ActionLink("Mens Clothing", "Index", "Mens")<br />
+            <span>@Html.ActionLink("Add New Item", "Create", "Mens") </span><span> -- @Html.ActionLink("Edit Existing", "Index", "Mens")</span>
+        </div>
+        <div id="rightPart">@Html.ActionLink("Womens Clothing", "Index", "Womens")<br />
+            <span>@Html.ActionLink("Add New Item", "Create", "Womens") </span><span> -- @Html.ActionLink("Edit Existing", "Index", "Womens")</span>
+        </div>
+        <div class="clear"></div><br /><br />
+    </div>
+    <div class="clear"></div>
+</div>

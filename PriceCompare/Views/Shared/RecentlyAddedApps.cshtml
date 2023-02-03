@@ -1,0 +1,9 @@
+﻿@model IEnumerable<PriceCompare.Models.Application>
+
+@foreach (var product in Model)
+{
+    <div class="rcn-1">
+    <div ><a class="rcn-a" href="/apps/@product.Id/@product.ArticleName.Replace(", "," ").Replace(" ", "-").ToLower()">@product.ArticleName</a></div>
+    <div class="rcn-txt">@product.MetaDescription</div>
+    </div>
+}

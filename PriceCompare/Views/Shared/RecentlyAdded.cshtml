@@ -1,0 +1,15 @@
+﻿@model IEnumerable<PriceCompare.Models.Product>
+
+<div id="leftList">
+    <div class="leftListTitle">
+        <h3>Recently Added</h3>
+    </div>
+    <div class="leftListItem">
+        <ul>
+            @foreach (var product in Model)
+            {
+                <li>@Html.ActionLink(product.Name, "Index", new { controller = "Product", id = product.Id, title = product.Name.Replace(", "," ").Replace(" ","-").ToLower() }, null)</li>
+            }
+        </ul>
+    </div>
+</div>

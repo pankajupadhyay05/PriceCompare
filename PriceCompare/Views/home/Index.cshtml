@@ -1,0 +1,322 @@
+﻿@{
+    ViewBag.Title = "Pricepan - Best Online Price Comparison Shopping in India";
+    ViewBag.Description = "Pricepan is one and only real-time price comparison website in India. Compare Prices of books, mobiles, electronics and much more from various stores.";
+    ViewBag.Keywords = "pricepan, pricepan.com, online price comparison, mobile price in india, compare prices of mobile, books price in india, laptop prices in india, accessories and laptops, news, reviews and updates of mobiles";
+    ViewBag.LikeType = "website";
+    ViewBag.LikeTitle = "Pricepan - Best Online Price Comparison Shopping in India";
+    ViewBag.LikeUrl = "http://www.pricepan.com";
+    ViewBag.LikeImage = "http://www.pricepan.com/pricepan.png";
+}
+
+<script src="@Url.Content("~/Scripts/menu-pricepan.js")?v=19" type="text/javascript"></script>
+
+<script type="application/ld+json">
+{
+	"@@context": "http://schema.org",
+	"@@type": "WebSite",
+	"url": "http://www.pricepan.com/",
+	"potentialAction": {
+		"@@type": "SearchAction",
+		"target": "http://www.pricepan.com/search?query={search_term}",
+		"query-input": "required name=search_term"
+	}
+}
+</script>
+
+<div itemscope itemtype="http://schema.org/Organization" style="display: none;">
+    <a itemprop="url" href="http://www.pricepan.com/">Pricepan</a>
+    <img itemprop="logo" src="http://www.pricepan.com/Content/themes/base/images/Logo.png" alt="Pricepan.com" width="187">
+</div>
+<div class="contentHolder">
+    <div id="homePageMiddle">
+        <div id="floatLeft">
+            <div id="sliderb_container" class="sld1">
+                <div u="loading" class="load1">
+                    <div class="load2">
+                    </div>
+                    <div class="load3">
+                    </div>
+                </div>
+                <div u="slides" class="sld2">
+                    <div>
+                        <a href="http://www.pricepan.com/news/21183/best-smartphones-of-2015-for-various-price-bracket"><img u=image src="@Url.Content("~/Content/Images/Featured/best-smartphones-2015-india-pricepan.jpg")" /></a>
+                        <div u="thumb">Best Smartphones of 2015 for various price bracket !!</div>
+                    </div>
+                    <div>
+                        <a href="http://www.pricepan.com/news/19150/apple-ipad-pro-is-the-new-member-of-ipad-family-from-apple"><img u=image src="@Url.Content("~/Content/Images/Featured/apple-ipad-pro-pricepan.jpg")" /></a>
+                        <div u="thumb">Apple iPad Pro with 12.9-inch Retina Display !!</div>
+                    </div>
+                    <div>
+                        <a href="http://www.pricepan.com/wardrobe"><img u=image src="@Url.Content("~/Content/Images/Featured/Depositphotos-3158680-XL.jpg")" /></a>
+                        <div u="thumb">No Season, No Sale!! Only the best sorted clothing everytime.</div>
+                    </div>
+                    <div>
+                        <a href="@Url.Action("Index", new { controller = "product", id = 6938, title = "Sony Bravia 40 Inches LED".Replace(", "," ").Replace(" ", "-").ToLower() })"><img u=image src="@Url.Content("~/Content/Images/Featured/sony-tv-33.jpg")" /></a>
+                        <div u="thumb">Sony Bravia 40 Inches Full HD LED Television</div>
+                    </div>
+                    <div>
+                        <a href="http://www.pricepan.com/tablets"><img u=image src="@Url.Content("~/Content/Images/Featured/tablets-33.jpg")" /></a>
+                        <div u="thumb">Best Tablets at amazing prices. Say Bbye to your confusion</div>
+                    </div>
+                    <div>
+                        <a href="http://www.pricepan.com/books"><img u=image src="@Url.Content("~/Content/Images/Featured/books-33.jpg")" /></a>
+                        <div u="thumb">Only the bestsellers to keep you engrossed all year long.</div>
+                    </div>
+                </div>
+                <div u="thumbnavigator" class="sliderb-T thb1" >
+                    <div class="thb2">
+                    </div>
+                    <div u="slides">
+                        <div u="prototype" class="thb3">
+                            <thumbnailtemplate class="thb4"></thumbnailtemplate>
+                        </div>
+                    </div>
+                </div>
+                <div u="navigator" class="jssorb01 nav11535">
+            
+                    <div u="prototype" style="POSITION: absolute; WIDTH: 12px; HEIGHT: 12px;"></div>
+                </div>
+                <a style="display: none" href="http://www.jssor.com">jquery slider example</a>
+            </div>
+        </div>
+        <div id="floatRight">
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- Pricepan Homepage Rectangle -->
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:300px;height:250px"
+                 data-ad-client="ca-pub-9061280781853186"
+                 data-ad-slot="9032179510">
+            </ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <h1 class="h1-home-head">Compare and find best prices of products added in below categories. Take your online shopping to all new level</h1>
+    <div class="leftListItem"><br />
+        <div class="bottomCatList">
+            <div class="bottomCatHeader bt-ct-h1"><a href="" class="bt-ct-txt">fiction</a></div><br />
+            <div class="bottomCatProducts">@{Html.RenderAction("RecentlyAddedForBooks", "Store");}</div>
+        </div>
+        <div class="bottomCatList">
+            <div class="bottomCatHeader bt-ct-h2"><a href="" class="bt-ct-txt">mobiles</a></div><br />
+            <div class="bottomCatProducts">@{Html.RenderAction("RecentlyAddedForMobiles", "Store");}</div>
+        </div>
+        <div class="bottomCatList">
+            <div class="bottomCatHeader bt-ct-h3"><a href="" class="bt-ct-txt">laptops</a></div><br />
+            <div class="bottomCatProducts">@{Html.RenderAction("RecentlyAddedForComputers", "Store");}</div>
+        </div>
+        <div class="bottomCatList-last">
+            <div class="bottomCatHeader bt-ct-h4"><a href="" class="bt-ct-txt">lcd and led TV</a></div><br />
+            <div class="bottomCatProducts">@{Html.RenderAction("RecentlyAddedForElectronics", "Store");}</div>
+        </div>
+        <div class="clear"></div>
+            <br />
+    </div>
+    <div class="seller-logo">
+        <img src="../news-images/amazon.png" alt="amazon india price comparison" />
+        <img src="../news-images/flipkart.png" alt="flipkart india price comparison" />
+        <img src="../news-images/infibeam.png" alt="infibeam india price comparison" />
+        <img src="../news-images/indiatimes.png" alt="indiatimes india price comparison" />
+        <img src="../news-images/snapdeal.png" alt="snapdeal india price comparison" />
+        <img src="../news-images/homeshop18.png" alt="homeshop18 india price comparison" />
+        <img src="../news-images/uread.png" alt="uread india price comparison" />
+    </div>
+    <div class="list-links-mobiles">
+        <h3 class="mob-lis-head">Mobile Phones Price Lists in India</h3>
+        <div class="grid-item">
+			<a href="/mobiles/samsung" class="grid-icon"> <img src="/Content/Images/Brands/brnd-samsung-100.png" alt="Samsung Mobile Price List in India">
+			</a>
+			<div class="grid-text">
+				<a href="/mobiles/samsung" class="grid-title">Samsung Mobile Price List</a>
+			</div>
+		</div>
+        <div class="grid-item">
+			<a href="/mobiles/micromax" class="grid-icon"> <img src="/Content/Images/Brands/brnd-micromax-100.png" alt="Micromax Mobile Price List in India">
+			</a>
+			<div class="grid-text">
+				<a href="/mobiles/micromax" class="grid-title">Micromax Mobile Price List</a>
+			</div>
+		</div>
+        <div class="grid-item">
+			<a href="/mobiles/nokia" class="grid-icon"> <img src="/Content/Images/Brands/brnd-nokia-100.png" alt="Nokia Mobile Price List in India">
+			</a>
+			<div class="grid-text">
+				<a href="/mobiles/nokia" class="grid-title">Nokia Mobile Price List</a>
+			</div>
+		</div>
+        <div class="grid-item">
+			<a href="/accessories/" class="grid-icon"> <img src="/Content/Images/Brands/mob-accessories-sq-100.png" alt="Mobile Accessories Price List in India">
+			</a>
+			<div class="grid-text">
+				<a href="/accessories/" class="grid-title">Mobile Accessories Price List</a>
+			</div>
+		</div>
+        <div class="grid-item">
+			<a href="/tablets/" class="grid-icon"> <img src="/Content/Images/Brands/2444-thumb.jpg" alt="Tablets Price in India">
+				</a>
+				<div class="grid-text">
+					<a href="/tablets/" class="grid-title">Tablets Price in India</a>
+				</div>
+		</div>
+        <div class="grid-item">
+			<a href="/mobiles/apple" class="grid-icon"> <img src="/Content/Images/Brands/iphone-5s.jpg" alt="Apple iPhone Price in India">
+				</a>
+				<div class="grid-text">
+					<a href="/mobiles/apple" class="grid-title">Apple iPhone Price in India</a>
+				</div>
+		</div>
+        <div class="clear"></div>
+    </div>
+    <div class="list-links-products">
+        <h3 class="mob-lis-head">Popular Products Price Lists on Pricepan</h3>
+        @{Html.RenderAction("PopularProducts", "Store");}
+        <div class="clear"></div>
+    </div>
+    <div class="sec-home">
+        <div class="rnr1">
+        <div class="sec-22">
+            <div class="sec-23">Recent News and Reviews</div>
+            <div class="sec-24"><a href="/news/" class="rnr-a">View All</a></div>
+            <div class="clear"></div>
+        </div>
+        @{Html.RenderAction("RecentlyAddedNews", "Store");}
+        </div>
+        <div class="rnr2">
+        <div class="sec-22">
+            <div class="sec-23">Latest App Update</div>
+            <div class="sec-24"><a href="/apps/" class="rnr-a">View All</a></div>
+            <div class="clear"></div>
+        </div>
+        @{Html.RenderAction("RecentlyAddedApps", "Store");}
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="list-links-products">
+        <h3 class="mob-lis-head">Latest in Sorted Wardrobe Clothing for Women</h3>
+        @{Html.RenderAction("RecentForWomen", "Store");}
+        <div class="clear"></div>
+    </div>
+    <div id="brandsAndCats">
+    <div class="brands-box">
+        <div class="box-header">
+            Popular brands
+        </div>
+        <br />
+        <div>
+            <div class="pb1">
+                <a href="/mobiles/samsung"><img src="/Content/themes/base/images/brand-samsung.gif" height="150px" width="150px" /></a>
+            </div>
+            <div class="pb2">
+                <a href="/laptops/dell"><img src="/Content/themes/base/images/brand-dell.gif" height="150px" width="150px" /></a>
+            </div>
+            <div class="pb1">
+                <a href="/mobiles/nokia"><img src="/Content/themes/base/images/brand-nokia.gif" height="150px" width="150px" /></a>
+            </div>
+            <div class="pb2">
+                <a href="/tablets/apple"><img src="/Content/themes/base/images/brand-apple.gif" height="150px" width="150px" /></a>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <div class="cats-box">
+        <div class="box-header">
+            Pricepan Categories
+        </div>
+        <div class="catsList-box">
+            <div class="catsList"><a href="/books/fiction">Fiction Books</a></div>
+            <div class="catsList"><a href="/books/non-fiction">Non-Fiction Books</a></div>
+            <div class="catsList"><a href="/mobiles/">Mobile Handsets</a></div>
+            <div class="catsList"><a href="/tablets/">Tablets</a></div>
+            <div class="catsList"><a href="/laptops/">Laptops</a></div>
+            <div class="catsList"><a href="/televisions/">LCD and LED TVs</a></div>
+            <div class="catsList"><a href="/accessories/">Accessories</a></div>
+            <div class="catsList"><a href="/news/">News and Reviews</a></div>
+        </div>
+    </div>
+    <div class="share-box">
+        <div class="contacts-box">
+            <div class="gcb">
+            
+            <div class="g-page" data-width="220" data-href="//plus.google.com/u/0/106385172438643568802" data-rel="publisher"></div>
+
+            
+            <script type="text/javascript">
+                (function () {
+                    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+                    po.src = 'https://apis.google.com/js/platform.js';
+                    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+                })();
+            </script>
+            </div>          
+        </div>
+    </div> 
+    <div class="clear"></div>
+    </div>
+    <br />
+    <div class="list-links-mobiles">
+        <h3 class="mob-lis-head">Some More Price Lists on Pricepan</h3>
+        <div class="grid-item">
+			<a href="/mobiles/blackberry/" class="grid-icon"> <img src="/Content/Images/Brands/brnd-blackberry-100.png" alt="Blackberry Mobile Price in India">
+			</a>
+			<div class="grid-text">
+				<a href="/mobiles/blackberry/" class="grid-title">Blackberry Mobile Price in India</a>
+			</div>
+		</div>
+        <div class="grid-item">
+			<a href="/laptops/" class="grid-icon"> <img src="/Content/Images/Brands/laptop.png" alt="Laptops Price in India">
+			</a>
+			<div class="grid-text">
+				<a href="/laptops/" class="grid-title">Laptops Price in India</a>
+			</div>
+		</div>
+        <div class="grid-item">
+			<a href="/mobiles/htc/" class="grid-icon"> <img src="/Content/Images/Brands/htc-square.png" alt="HTC Mobile Price List">
+			</a>
+			<div class="grid-text">
+				<a href="/mobiles/htc/" class="grid-title">HTC Mobile Price List</a>
+			</div>
+		</div>
+        <div class="grid-item">
+			<a href="/books/fiction/" class="grid-icon"> <img src="/Content/Images/Brands/open-book.png" alt="Fiction Books Price List in India">
+			</a>
+			<div class="grid-text">
+				<a href="/books/fiction/" class="grid-title">Fiction Books Price List in India</a>
+			</div>
+		</div>
+        <div class="grid-item">
+			<a href="/mobiles/sony" class="grid-icon"> <img src="/Content/Images/Brands/sonyericsson-square.png" alt="Sony Mobile Price List">
+				</a>
+				<div class="grid-text">
+					<a href="/mobiles/sony" class="grid-title">Sony Mobile Price List</a>
+				</div>
+		</div>
+        <div class="clear"></div>
+    </div>
+    <div>
+        <h2 class="h2-home">About Pricepan</h2>
+        <p class="txt-home">Pricepan is one and only real-time price comparison site in India established in December 2013. We are new and learning every day to meet your shopping needs and habits. You can compare prices of Books, Mobiles, Tablets, Laptops, TVs and much more at Pricepan. It's not just any other price comparison engine instead a catalog of sorted products based on quality and user reviews. In addition to price compare facility, you also get updated with the latest tech news and app updates under one roof.</p>
+        <p class="txt-home">Pricepan's price compare facility can also be accessed through Mobiles. We have a mobile specific interface at <a href="http://m.pricepan.com">http://m.pricepan.com</a> for people on the go. To summarize, Pricepan.com aims at easing your shopping and save money via user-friendy interface without cluttering the experience with too much information. </p>
+    </div><br />
+    <br />
+    <div id="adAndAboutUs">
+        <div class="gb-bt-ad">
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- Pricepan Homepage Bottom -->
+            <ins class="adsbygoogle"
+                style="display:inline-block;width:728px;height:90px"
+                data-ad-client="ca-pub-9061280781853186"
+                data-ad-slot="4358195117">
+            </ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>  
+        </div>
+        <div class="gt-abt">
+            <a href="/about/">
+                <img src="/Content/themes/base/images/about-us.jpg" alt="about pricepan" />
+            </a>
+        </div>
+        <div class="clear"></div>
+        <br />
+    </div>
+</div>

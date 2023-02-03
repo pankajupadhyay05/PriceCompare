@@ -1,0 +1,9 @@
+﻿@model IEnumerable<PriceCompare.Models.NewsAndReview>
+
+@foreach (var product in Model)
+{
+    <div class="rcn-1">
+    <div ><a class="rcn-a" href="/news/@product.Id/@product.Title.Replace(", "," ").Replace(" ", "-").ToLower()">@product.Title</a></div>
+    <div class="rcn-txt">@product.MetaDescription</div>
+    </div>
+}

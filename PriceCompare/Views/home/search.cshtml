@@ -1,0 +1,71 @@
+﻿@model PagedList.IPagedList<PriceCompare.Models.Product>
+
+@{
+    ViewBag.Title = "Pricepan | Search | " + @ViewBag.query;
+}
+
+<div class="contentHolder">
+    <div id="searchHeading">Your search for <span>@ViewBag.query</span> matched <span>@ViewBag.proCount</span> result<span>@ViewBag.Terms</span> </div>
+    <div id="searchProducts">
+        <div class="productCat">    
+            @foreach (var product in Model)
+            {
+                <div class="product">
+                    <div class="sr-img-container">
+                        <a href="@Url.Action("Index", new { controller = "product", id = product.Id, title = product.Name.Replace(", "," ").Replace(" ", "-").ToLower() })"><img alt="@product.Name" src="@product.Picture.PictureUrl" /></a>
+                    </div>
+                    <div class="sr-content-container">
+                        <h4>@Html.ActionLink(product.Name, "Index", new { controller = "product", id = product.Id, title = product.Name.Replace(", ", " ").Replace(" ", "-").ToLower() }, null)</h4>
+                        <p>
+                            @product.ShortDescription
+                        </p>
+                    </div>
+                    <div class="sr-price-area-container">
+                        <div class="price-button">
+                            <div class="sr-price">&#8360;@product.BasePrice
+                            </div>
+                            <div class="from-text">From
+                            </div>
+                            <div class="clear">
+                            </div>
+                        </div>
+                        <div class="sr-cta">
+                             @Html.ActionLink("Compare", "Index", new { controller = "product", id = product.Id, title = product.Name.Replace(", ", " ").Replace(" ", "-").ToLower() }, null)
+                        </div>
+                        <div class="sr-num-sellers">@product.Retailer_Product_Prices.Count()&nbsp;resellers
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            }
+            @Html.Partial("Pagination")
+            </div>
+        </div>
+    <br /><br />
+    <div class="priceAd">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <script type="text/javascript"><!--
+            google_ad_client = "ca-pub-9061280781853186";
+            /* Price-tag Search */
+            google_ad_slot = "9272565230";
+            google_ad_width = 728;
+            google_ad_height = 90;
+            //-->
+        </script>
+        <script type="text/javascript"
+            src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+        </script>
+    </div><br />
+    <div class="priceAd">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <script type="text/javascript"><!--
+            google_ad_client = "ca-pub-9061280781853186";
+            /* Price-tag Search */
+            google_ad_slot = "1165082687";
+            google_ad_width = 728;
+            google_ad_height = 90;
+            //-->
+        </script>
+        <script type="text/javascript"
+            src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+        </script>
+    </div><br /><br />
+</div>

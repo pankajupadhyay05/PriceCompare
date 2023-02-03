@@ -1,0 +1,149 @@
+﻿@model PriceCompare.Models.Application
+@helper Truncate(string input, int length)
+    {
+        if (input.Length <= length)
+        {
+            @input
+        }
+        else
+        { 
+        @input.Substring(0, length)<text>...</text>
+        }
+}
+
+<script type="application/ld+json">
+{
+  "@@context": "http://schema.org",
+  "@@type": "NewsArticle",
+  "url": "http://www.pricepan.com/apps/@Model.Id/@Model.ArticleName.Replace(" ","-")",
+  "headline": "@Model.ArticleName",
+  "image": "@Model.ArticleImage",
+  "datePublished": "@Model.Date",
+  "description": "@Model.MetaDescription",
+  "articleBody": "@Model.ArticleContent"
+}
+</script>
+<div id="fb-root"></div>
+<script type="text/javascript">
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=224988984248796";
+        fjs.parentNode.insertBefore(js, fjs);
+    } (document, 'script', 'facebook-jssdk')
+        );
+</script>
+
+<div class="contentHolder">
+    <div class="breadCrumb">
+         @Html.ActionLink("Home", "Index", "Home")&nbsp;>>&nbsp;@Html.ActionLink("Applications", "Index", "apps")&nbsp;>>&nbsp;@Truncate(Model.ArticleName, 50)
+    </div>
+    <div class="contentMainDiv">
+        <div class="leftDiv">
+            @{Html.RenderAction("RecentSearches", "Store");}
+            @{Html.RenderAction("RecentlyAdded", "Store");}
+            <br />
+            <div>
+                <script type="text/javascript"><!--
+                    google_ad_client = "ca-pub-9061280781853186";
+                    /* Price-tag middle-left */
+                    google_ad_slot = "7057947687";
+                    google_ad_width = 160;
+                    google_ad_height = 600;
+                    //-->
+                </script>
+                <script type="text/javascript"
+                    src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+                </script>
+            </div>
+        </div>
+        <div class="rightDiv">
+            <div class="mainCatNewsDiv">
+                <div class="newspage-div">
+                    <h1 class="newspage-heading">@Model.ArticleName</h1>
+                    <div style="margin-bottom:20px;">
+                        <div style="float:left;width:105px;background-color:#666;color:#FFF;padding:2px;font-size:12px; margin-bottom:5px;">Date: <span>@Model.Date</span></div>
+                        <div style="float:left;margin-left:20px;color:Green;font-size:14px;font-style:italic;">@Model.AppName</div>
+                        <div style="float:left;margin-left:20px;color:#044D77;font-size:14px;font-weight:bold;">@Model.Tag.ToUpper()</div>
+                        <div class="clear"></div>
+                    </div>
+                    <div style="font-size:14px;margin-top:20px;">
+                        @Model.MetaDescription
+                    </div>
+                    <br />
+                    <div class="hh47">
+                        <img src="@Model.ArticleImage" />
+                    </div>
+                    <br />
+                    <div id="desc-text">
+                        @Html.Raw(Model.ArticleContent)
+                    </div><br />
+                    <div style="font-size:13px;">
+                        <span style="font-style:italic;font-weight:bold;">App Link</span> : <a style="text-decoration:underline;" href="@Model.AppLink" target="_blank">Download @Model.AppName now</a>
+                    </div>
+                </div>  
+            </div>
+            <div class="clear"></div>
+            <br />
+            <span><div class="fb-like" data-layout="box_count" data-action="like" data-show-faces="true" data-share="false"></div></span>
+            <!-- Place this tag where you want the +1 button to render. -->
+            <span style="margin-left:10px;"><div class="g-plusone" data-size="tall"></div></span>
+            <span style="margin-left:10px;"><a style="margin-left:5px;" href="//www.pinterest.com/pin/create/button/?url=http://www.pricepan.com/news/@Model.Id/@Model.ArticleName.Replace(" ","-")&media=@Model.ArticleImage&description=@Model.ArticleName" data-pin-do="buttonPin" data-pin-config="above" data-pin-color="red"><img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_red_20.png" /></a></span>
+            <span style="margin-left:10px;"><script src="http://platform.linkedin.com/in.js" type="text/javascript">
+                                                lang: en_US
+            </script></span>
+            <script type="IN/Share" data-counter="top"></script>
+            <span style="margin-left:10px;"><a style="margin-left:5px;" href="https://twitter.com/share" class="twitter-share-button" data-via="pricepan">Tweet</a>
+            <script>                !function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + '://platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore(js, fjs); } } (document, 'script', 'twitter-wjs');</script></span>
+            <br /><br />
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+                /* * * CONFIGURATION VARIABLES * * */
+                var disqus_shortname = 'pricepan';
+                var disqus_title = '@Model.ArticleName';
+                var disqus_url = 'http://www.pricepan.com/apps/@Model.Id/@Model.ArticleName.Replace(" ","-")';
+
+                /* * * DON'T EDIT BELOW THIS LINE * * */
+                (function () {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+            <div class="bottomAds">
+                <div id="bottom-rectangle">
+                    <script type="text/javascript"><!--
+                        google_ad_client = "ca-pub-9061280781853186";
+                        /* Price-tag Bottom */
+                        google_ad_slot = "1165082687";
+                        google_ad_width = 728;
+                        google_ad_height = 90;
+                        //-->
+                    </script>
+                    <script type="text/javascript"
+                        src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <!-- Please call pinit.js only once per page -->
+    <script type="text/javascript" async defer src="//assets.pinterest.com/js/pinit.js"></script>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES * * */
+        var disqus_shortname = 'pricepan';
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function () {
+            var s = document.createElement('script'); s.async = true;
+            s.type = 'text/javascript';
+            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        } ());
+    </script>
+</div>
